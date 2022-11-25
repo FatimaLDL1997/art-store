@@ -97,6 +97,10 @@ const Wrapper = styled.nav`
     color: white;
     padding-bottom: 1rem;
   }
+  .category-btn-white:hover {
+    cursor: pointer;
+    color: #1a0b0b;
+  }
   .category-btn:hover {
     cursor: pointer;
   }
