@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Navbar } from "../components";
 import styled from "styled-components";
 import loadingImage from "../images/preloader.gif";
@@ -12,6 +12,9 @@ import { AiTwotoneDelete } from "react-icons/ai";
 const Cart = () => {
   const { amount, setAmount, cartItems, setCartItems, isloading } =
     React.useContext(StoreContext);
+
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const handleDel = (e) => {
     let clickedItem =
@@ -27,7 +30,7 @@ const Cart = () => {
       prevItems.splice(foundIndex, 1);
       return prevItems;
     });
-    let cartDisplay = document.getElementsByClassName("item-container");
+    forceUpdate();
   };
 
   return (

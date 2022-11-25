@@ -18,7 +18,7 @@ const ProductItem = () => {
 
   console.log(cartItems);
 
-  const handleDec = (e) => {
+  const handleDec = () => {
     setAmount((prevAmnt) => {
       console.log("prev" + prevAmnt);
 
@@ -31,7 +31,7 @@ const ProductItem = () => {
     });
   };
 
-  const handleInc = (e) => {
+  const handleInc = () => {
     // let newItem = e.currentTarget.parentElement.parentElement.children[0];
     setAmount((prevAmnt) => {
       console.log("prev " + prevAmnt);
@@ -45,6 +45,7 @@ const ProductItem = () => {
       return tempAmount;
     });
   };
+
   const addToCart = (e) => {
     console.log("add to cart");
     let item =
@@ -59,6 +60,7 @@ const ProductItem = () => {
           src: item.src,
         },
       ];
+      let cartAmount = document.getElementsByClassName("cart-amount");
 
       if (amount > 0) {
         //if not 0 items -> add to cart
@@ -70,8 +72,9 @@ const ProductItem = () => {
           let foundIndex = cartItems.findIndex((el) => el[0].name == item.alt);
 
           if (cartItems.length == 0 || foundIndex < 0) {
-            console.log("cartitems cleared");
             prevItems.push(tempItem);
+            cartAmount[0].innerHTML = cartItems.length;
+
             return prevItems;
           } else if (foundIndex >= 0) {
             console.log("found same item");
@@ -84,7 +87,6 @@ const ProductItem = () => {
         return prevItems;
       }
     });
-    useEffect(() => {});
   };
   return (
     <main>
@@ -145,15 +147,6 @@ const ProductItem = () => {
               quos deleniti pariatur similique voluptatum beatae.
             </div>
           </div>
-
-          <Link to={`/cart`}>
-            <HiShoppingCart className='cart-icon' />
-            <div className='circle'>
-              <h2 className='cart-amount'>
-                {!cartItems ? 0 : cartItems.length}
-              </h2>
-            </div>
-          </Link>
         </div>
       </Wrapper>
     </main>
@@ -170,6 +163,9 @@ const Wrapper = styled.nav`
     position: fixed;
     bottom: 3vh;
     font-size: 3rem;
+  }
+  .back:hover {
+    color: #ecd7d7;
   }
   .cart-amount {
     color: black;
@@ -192,8 +188,11 @@ const Wrapper = styled.nav`
   }
   .btn-add {
     position: relative !important;
-    font-size: 1srem !important;
+    font-size: 1rem !important;
     background: #ca6e6e;
+  }
+  .btn-add:hover {
+    background: #da9c9c;
   }
   .adj-amount {
     display: flex;
@@ -211,6 +210,10 @@ const Wrapper = styled.nav`
     cursor: pointer;
     border: none;
     background: none;
+  }
+  .adj-amount .plus:hover,
+  .adj-amount .minus:hover {
+    color: #ca6e6e;
   }
   .adj-amount .amount {
     width: 2rem;
