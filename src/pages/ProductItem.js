@@ -1,0 +1,265 @@
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { Navbar } from "../components";
+import { HiShoppingCart } from "react-icons/hi";
+import { hobbies } from "../context/data/products";
+import { Link } from "react-router-dom";
+import { BiArrowBack, BiMinus, BiPlus } from "react-icons/bi";
+import { StoreProvider, StoreContext } from "../context/context";
+
+const ProductItem = () => {
+  console.log("product");
+  const { productId } = useParams();
+  const { amount, setAmount, cartItems, setCartItems } =
+    React.useContext(StoreContext);
+  const product = hobbies.find((product) => product.id == productId);
+  const { id, medium, size, text, price, category, img } = product;
+
+  console.log(cartItems);
+
+  const handleDec = (e) => {
+    setAmount((prevAmnt) => {
+      console.log("prev" + prevAmnt);
+
+      let tempAmount = prevAmnt - 1;
+      if (tempAmount < 0) {
+        tempAmount = 0;
+      }
+      console.log("current" + tempAmount);
+      return tempAmount;
+    });
+  };
+
+  const handleInc = (e) => {
+    // let newItem = e.currentTarget.parentElement.parentElement.children[0];
+    setAmount((prevAmnt) => {
+      console.log("prev " + prevAmnt);
+
+      let tempAmount = prevAmnt + 1;
+      if (tempAmount > 10) {
+        tempAmount = 10;
+      }
+      console.log("current " + tempAmount);
+
+      return tempAmount;
+    });
+  };
+  const addToCart = (e) => {
+    console.log("add to cart");
+    let item =
+      e.currentTarget.parentElement.parentElement.children[0].children[0];
+    setCartItems((prevItems) => {
+      let tempItem = [
+        {
+          amount: amount,
+          price: price,
+          id: item.id,
+          name: item.alt,
+          src: item.src,
+        },
+      ];
+
+      if (amount > 0) {
+        //if not 0 items -> add to cart
+        // console.log(cartItems.findIndex((el) => el[0].name == item.alt));
+
+        if (cartItems) {
+          console.log(cartItems);
+          //   console.log(item);
+          let foundIndex = cartItems.findIndex((el) => el[0].name == item.alt);
+
+          if (cartItems.length == 0 || foundIndex < 0) {
+            console.log("cartitems cleared");
+            prevItems.push(tempItem);
+            return prevItems;
+          } else if (foundIndex >= 0) {
+            console.log("found same item");
+            prevItems.splice(foundIndex, 1, tempItem);
+            console.log(prevItems);
+            return prevItems;
+          }
+        }
+      } else {
+        return prevItems;
+      }
+    });
+    useEffect(() => {});
+  };
+  return (
+    <main>
+      <Wrapper>
+        <div className='fixed-content' key={id}>
+          <div className='side-nav-gap'></div>
+          <div className='side-nav'>
+            <h4>ITEM</h4>
+            <h5>Category: {category.toUpperCase()} </h5>
+            <h5>Price: ${price} </h5>
+            <h5>Size: {size}</h5>
+            <h5>Medium: {medium}</h5>
+            <h5>Framed: No</h5>
+            <Link
+              to={{ pathname: "/", state: { fromDashboard: true } }}
+              className='back'
+            >
+              <BiArrowBack />
+            </Link>
+          </div>
+          <div className='store-space'>
+            <Navbar></Navbar>
+          </div>
+
+          <div className='paintings-box'>
+            <div className='left-side'>
+              <img id={id} src={img} alt={text} />
+
+              <div className='adj-amount'>
+                <button
+                  type='button'
+                  className='minus'
+                  onClick={(e) => handleDec(e)}
+                >
+                  <BiMinus />
+                </button>
+
+                <h2 className='amount'> {amount}</h2>
+
+                <button
+                  type='button'
+                  className='plus'
+                  onClick={(e) => handleInc(e)}
+                >
+                  <BiPlus />
+                </button>
+              </div>
+              <button onClick={(e) => addToCart(e)} className='btn btn-add'>
+                ADD TO CART
+              </button>
+            </div>
+
+            <div className='disc'>
+              <span className='title'>{text}</span>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perferendis mollitia nostrum odio a, sequi nisi rem molestiae,
+              doloribus commodi, facere esse exercitationem inventore? Quam,
+              quos deleniti pariatur similique voluptatum beatae.
+            </div>
+          </div>
+
+          <Link to={`/cart`}>
+            <HiShoppingCart className='cart-icon' />
+            <div className='circle'>
+              <h2 className='cart-amount'>
+                {!cartItems ? 0 : cartItems.length}
+              </h2>
+            </div>
+          </Link>
+        </div>
+      </Wrapper>
+    </main>
+  );
+};
+const Wrapper = styled.nav`
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .back {
+    color: black;
+    position: fixed;
+    bottom: 3vh;
+    font-size: 3rem;
+  }
+  .cart-amount {
+    color: black;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .circle {
+    border-radius: 50%;
+    background: white;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 6vh;
+    right: 4vw;
+    width: 2rem;
+    height: 2rem;
+    z-index: 0;
+    opacity: 0.8;
+  }
+  .btn-add {
+    position: relative !important;
+    font-size: 1srem !important;
+    background: #ca6e6e;
+  }
+  .adj-amount {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .adj-amount .plus,
+  .adj-amount .minus {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  .adj-amount .amount {
+    width: 2rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    color: black;
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .disc {
+    width: 37vw;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    right: 2vw;
+    left: 2vw;
+  }
+  .btn {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1rem;
+    padding: 0.5vh;
+  }
+  .title {
+    font-size: 4rem;
+    font-weight: 400;
+    padding-bottom: 1rem;
+  }
+  .paintings-box img {
+    margin-bottom: 2vh;
+    margin-right: 2vw;
+
+    width: 20rem;
+  }
+  .paintings-box {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 30vw;
+    flex-wrap: wrap;
+    padding-top: 8rem;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+`;
+
+export default ProductItem;
