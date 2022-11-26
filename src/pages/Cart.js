@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Navbar } from "../components";
 import styled from "styled-components";
-import loadingImage from "../images/preloader.gif";
-import { HiShoppingCart } from "react-icons/hi";
-import { hobbies } from "../context/data/products";
 import { StoreProvider, StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
