@@ -1,19 +1,6 @@
-import React, { useState, useEffect } from "react";
-
-import axios from "axios"; // to perform json fetching requests
+import React, { useState } from "react";
 
 const StoreContext = React.createContext();
-
-//provder , consumer  - GithubContext.Provider
-// const getLocalStorage = () => {
-//   let cartItems = localStorage.getItem("cartItems");
-//   if (cartItems) {
-//     return JSON.parse(localStorage.getItem("cartItems"));
-//   } else {
-//     return [];
-//   }
-// };
-// console.log(getLocalStorage());
 
 const StoreProvider = ({ children }) => {
   //request loading

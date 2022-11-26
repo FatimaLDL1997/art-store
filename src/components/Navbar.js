@@ -4,14 +4,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
-import { StoreProvider, StoreContext } from "../context/context";
+import { StoreContext } from "../context/context";
 
 const Navbar = () => {
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
-  const { amount, setAmount, cartItems, setCartItems, isloading } =
-    React.useContext(StoreContext);
+  const { cartItems } = React.useContext(StoreContext);
   // console.log({ isAuthenticated, user, isLoading });
   const isUser = isAuthenticated && user;
   return (

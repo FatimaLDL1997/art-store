@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+// eslint-disable-next-line
 const CheckoutForm = () => {
   return <h2> Hello from checkout stripe</h2>;
 };

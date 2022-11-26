@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { Navbar } from "../components";
 import styled from "styled-components";
 import loadingImage from "../images/preloader.gif";
-import { HiShoppingCart } from "react-icons/hi";
 import { hobbies } from "../context/data/products";
-import { StoreProvider, StoreContext } from "../context/context";
+import { StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
-
+// eslint-disable-next-line
 const Dashboard = () => {
-  const { amount, setAmount, cartItems, setCartItems, isloading } =
-    React.useContext(StoreContext);
+  const { setAmount, cartItems, isloading } = React.useContext(StoreContext);
   const [products, setProducts] = useState(hobbies);
   const [active, setActive] = useState("0");
 
@@ -67,7 +65,7 @@ const Dashboard = () => {
             <Navbar></Navbar>
             <div className='paintings-box'>
               {menuItems.map((product) => {
-                const { id, img, text, price, category } = product;
+                const { id, img } = product;
                 return (
                   <div key={id} className='box'>
                     <Link to={`${id}`}>
