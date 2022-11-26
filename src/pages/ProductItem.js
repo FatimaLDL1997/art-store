@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components";
+import { HiShoppingCart } from "react-icons/hi";
 import { hobbies } from "../context/data/products";
 import { Link } from "react-router-dom";
 import { BiArrowBack, BiMinus, BiPlus } from "react-icons/bi";
-import { StoreContext } from "../context/context";
-// eslint-disable-next-line
+import { StoreProvider, StoreContext } from "../context/context";
+
 const ProductItem = () => {
   console.log("product");
   const { productId } = useParams();
   const { amount, setAmount, cartItems, setCartItems } =
     React.useContext(StoreContext);
-  const product = hobbies.find((product) => product.id === productId);
+  const product = hobbies.find((product) => product.id == productId);
   const { id, medium, size, text, price, category, img } = product;
 
   console.log(cartItems);
@@ -68,9 +69,9 @@ const ProductItem = () => {
         if (cartItems) {
           console.log(cartItems);
           //   console.log(item);
-          let foundIndex = cartItems.findIndex((el) => el[0].name === item.alt);
+          let foundIndex = cartItems.findIndex((el) => el[0].name == item.alt);
 
-          if (cartItems.length === 0 || foundIndex < 0) {
+          if (cartItems.length == 0 || foundIndex < 0) {
             prevItems.push(tempItem);
             cartAmount[0].innerHTML = cartItems.length;
 
