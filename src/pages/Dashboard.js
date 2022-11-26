@@ -78,15 +78,6 @@ const Dashboard = () => {
               })}
             </div>
           </div>
-
-          {/* <Link to={`/cart`}>
-            <HiShoppingCart className='cart-icon' />
-            <div className='circle'>
-              <h2 className='cart-amount'>
-                {!cartItems ? 0 : cartItems.length}
-              </h2>
-            </div>
-          </Link> */}
         </div>
       </Wrapper>
     </main>

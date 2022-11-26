@@ -1,3 +1,3 @@
 import Navbar from "./Navbar";
-
-export { Navbar };
+import StripeCheckout from "./StripeCheckout";
+export { Navbar, StripeCheckout };
