@@ -9,7 +9,7 @@ import { StoreContext } from "../context/context";
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
-  const { cartItems } = React.useContext(StoreContext);
+  const { cartItems, clearCart } = React.useContext(StoreContext);
   // console.log({ isAuthenticated, user, isLoading });
   const isUser = isAuthenticated && user;
   return (
@@ -21,6 +21,7 @@ const Navbar = () => {
       ) : (
         <button
           onClick={() => {
+            clearCart();
             logout({ returnTo: window.location.origin });
           }}
         >

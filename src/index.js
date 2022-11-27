@@ -5,12 +5,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./context/context";
 import { Auth0Provider } from "@auth0/auth0-react";
-//dev-ucxj3l5obyfjomqw.us.auth0.com
-//EyeOlVk79Ql67wBLnnGiuF8JbPeVdl0D
+
 ReactDOM.render(
   <Auth0Provider
-    domain='dev-ucxj3l5obyfjomqw.us.auth0.com'
-    clientId='wGPE9bBzx3yoT5zLN0CMhs2FcCKR9D71'
+    domain={process.env.REACT_APP_AUTH_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
     redirectUri={window.location.origin}
     cacheLocation='localstorage'
   >

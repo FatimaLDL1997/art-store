@@ -11,6 +11,9 @@ const StoreProvider = ({ children }) => {
   //error
   const [error, setError] = useState({ show: false, msg: "" });
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
   return (
     <StoreContext.Provider
       value={{
@@ -20,6 +23,7 @@ const StoreProvider = ({ children }) => {
         setAmount,
         cartItems,
         setCartItems,
+        clearCart,
       }}
     >
       {children}
