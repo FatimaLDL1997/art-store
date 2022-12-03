@@ -4,10 +4,18 @@ import { StoreProvider, StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
+// eslint-disable-next-line
 
 const Cart = () => {
-  const { amount, setAmount, cartItems, setCartItems, isloading } =
-    React.useContext(StoreContext);
+  const {
+    amount,
+    setAmount,
+    cartItems,
+    total,
+    setTotal,
+    setCartItems,
+    isloading,
+  } = React.useContext(StoreContext);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -21,7 +29,7 @@ const Cart = () => {
         .children[0].alt
     );
     let foundIndex = cartItems.findIndex((el) => el[0].name == clickedItem);
-    console.log(foundIndex);
+    // console.log(foundIndex);
     setCartItems((prevItems) => {
       prevItems.splice(foundIndex, 1);
       return prevItems;
@@ -47,7 +55,7 @@ const Cart = () => {
             </Link>
             {cartItems.map((item, index) => {
               const { amount, price, id, name, src } = item[0];
-              // const { amount, price, id, name, src } = item;
+              // cons bvt { amount, price, id, name, src } = item;
               return (
                 <div key={index} className='item-container'>
                   <div className='item-side'>
@@ -75,14 +83,7 @@ const Cart = () => {
 
             <div className='total-container'>
               <h1>Total</h1>
-              <h1>
-                $
-                {cartItems.reduce(
-                  (a, v) =>
-                    (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
-                  0
-                )}
-              </h1>
+              <h1>${total}</h1>
             </div>
             <Link to={{ pathname: "/checkout" }} className='checkout-container'>
               <button
