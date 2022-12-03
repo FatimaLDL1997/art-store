@@ -11,8 +11,9 @@ import { StoreProvider, StoreContext } from "../context/context";
 const ProductItem = () => {
   console.log("product");
   const { productId } = useParams();
-  const { amount, setAmount, cartItems, setCartItems } =
+  const { amount, setAmount, cartItems, total, setTotal, setCartItems } =
     React.useContext(StoreContext);
+
   const product = hobbies.find((product) => product.id == productId);
   const { id, medium, size, text, price, category, img } = product;
 
@@ -50,6 +51,7 @@ const ProductItem = () => {
     console.log("add to cart");
     let item =
       e.currentTarget.parentElement.parentElement.children[0].children[0];
+
     setCartItems((prevItems) => {
       let tempItem = [
         {
@@ -60,15 +62,25 @@ const ProductItem = () => {
           src: item.src,
         },
       ];
+
       let cartAmount = document.getElementsByClassName("cart-amount");
 
       if (amount > 0) {
         //if not 0 items -> add to cart
         // console.log(cartItems.findIndex((el) => el[0].name == item.alt));
 
+        setTotal((prevTotal) => {
+          console.log("store total");
+          prevTotal = cartItems.reduce(
+            (a, v) => (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
+            0
+          );
+          return prevTotal;
+        });
+        console.log("total:" + total);
+
         if (cartItems) {
           console.log(cartItems);
-          //   console.log(item);
           let foundIndex = cartItems.findIndex((el) => el[0].name == item.alt);
 
           if (cartItems.length == 0 || foundIndex < 0) {

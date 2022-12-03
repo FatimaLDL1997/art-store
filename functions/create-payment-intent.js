@@ -1,31 +1,30 @@
-// const dotenv = require("dotenv");
-// dotenv.config();
+// domain/.netlify/functions/hello
+require("dotenv").config();
+
 const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
-const express = require("express");
-const app = express();
-// This is your test secret API key.
 
-app.use(express.static("public"));
-app.use(express.json());
-
-const calculateOrderAmount = (items) => {
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
-  return 1400;
+exports.handler = async function (event, context) {
+  const { total } = JSON.parse(event.body);
+  if (event.body) {
+    try {
+      // Create a PaymentIntent with the order amount and currency
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: total * 100,
+        currency: "cad",
+      });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ clientSecret: paymentIntent.client_secret }),
+      };
+    } catch (error) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: error.message }),
+      };
+    }
+  }
+  return {
+    statusCode: 200,
+    body: "create payemnt intent",
+  };
 };
-
-app.post("/create-payment-intent", async (req, res) => {
-  const { items } = req.body;
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: calculateOrderAmount(items),
-    currency: "usd",
-  });
-
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
-});
-
-app.listen(4242, () => console.log("Node server listening on port 4242!"));

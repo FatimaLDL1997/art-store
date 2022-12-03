@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { loadStripe } from "@stripe/stripe-js";
+import { formatPrice } from "../utils/helpers";
 import {
   CardElement,
   useStripe,
@@ -8,40 +9,23 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { formatPrice } from "../utils/helpers";
+import { StoreContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
-
-import { StoreProvider, StoreContext } from "../context/context";
-// import { useHistory } from "react-router-dom";
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
+  const navigate = useNavigate();
+  const { total, isAuthenticated, loginWithRedirect, logout, user, clearCart } =
+    React.useContext(StoreContext);
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    window
-      .fetch("/create-payment-intent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-      })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-      });
-  }, []);
 
   const cardStyle = {
     style: {
@@ -54,19 +38,33 @@ const CheckoutForm = () => {
           color: "#32325d",
         },
       },
+
       invalid: {
-        fontFamily: "Arial, sans-serif",
         color: "#fa755a",
         iconColor: "#fa755a",
       },
     },
   };
+  const createPaymentIntent = async () => {
+    try {
+      const data = await axios.post(
+        "/.netlify/functions/create-payment-intent",
+        JSON.stringify({ total })
+      );
+      setClientSecret(data.data.clientSecret);
+      console.log(clientSecret);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    createPaymentIntent();
+    //eslint-disable-next-line
+  }, []);
 
   const handleChange = async (event) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
     setDisabled(event.empty);
-    setError(event.error ? event.error.message : "");
+    setError(event.error ? event.error.message : " ");
   };
 
   const handleSubmit = async (ev) => {
@@ -80,53 +78,68 @@ const CheckoutForm = () => {
     });
 
     if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
+      setError(`Payment Failed ${payload.error.message}`);
       setProcessing(false);
     } else {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      setTimeout(() => {
+        clearCart();
+        navigate("/");
+      }, 5000);
     }
   };
+  const isUser = isAuthenticated && user;
 
   return (
-    <form id='payment-form' onSubmit={handleSubmit}>
-      <CardElement
-        id='card-element'
-        options={cardStyle}
-        onChange={handleChange}
-      />
-      <button disabled={processing || disabled || succeeded} id='submit'>
-        <span id='button-text'>
-          {processing ? (
-            <div className='spinner' id='spinner'></div>
-          ) : (
-            "Pay now"
-          )}
-        </span>
-      </button>
-      {/* Show any error that happens when processing the payment */}
-      {error && (
-        <div className='card-error' role='alert'>
-          {error}
-        </div>
+    <div className='checkout-container'>
+      {succeeded ? (
+        <article className='title'>
+          <h4 className='title-success'>Thank You!</h4>
+          <h4>Your payment was successful!</h4>
+          <h4>Redirecting to home page shortly...</h4>
+        </article>
+      ) : (
+        <article className='title'>
+          <h4 className='title-start'>Hello, {isUser && user.nickname}</h4>
+          <p>Your total is {formatPrice(total)}</p>
+          <p>Test Card Number: 4242 4242 4242 4242</p>
+        </article>
       )}
-      {/* Show a success message upon completion */}
-      <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
-        <a href={`https://dashboard.stripe.com/test/payments`}>
-          {" "}
-          Stripe dashboard.
-        </a>{" "}
-        Refresh the page to pay again.
-      </p>
-    </form>
+      <form id='payment-form' onSubmit={handleSubmit}>
+        <CardElement
+          id='card-element'
+          options={cardStyle}
+          onChange={handleChange}
+        />
+        <button disabled={processing || disabled || succeeded} id='submit'>
+          <span id='button-text'>
+            {processing ? <div className='spinner' id='spinner'></div> : "pay"}{" "}
+          </span>
+        </button>
+        {/*show any error that happens when processing the payment*/}
+        {error && (
+          <div className='card-element' role='alert'>
+            {error}
+          </div>
+        )}
+        {/* show any success message upon completion  */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment succeeded, see the result in your
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe dashboard.
+          </a>
+          Refresh the page to pay again.
+        </p>
+      </form>
+    </div>
   );
 };
 
 const StripeCheckout = () => {
-  const { amount, setAmount, cartItems, setCartItems } =
-    React.useContext(StoreContext);
+  //   const { total } = React.useContext(StoreContext);
+
   return (
     <Wrapper>
       <Elements stripe={promise}>
@@ -137,9 +150,25 @@ const StripeCheckout = () => {
 };
 
 const Wrapper = styled.section`
+  .title-success,
+  .title-start {
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .checkout-container {
+    padding-top: 20vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
   form {
-    width: 30vw;
-    min-width: 500px;
+    width: 40vw;
+
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
       0px 2px 5px 0px rgba(50, 50, 93, 0.1),
@@ -147,25 +176,53 @@ const Wrapper = styled.section`
     border-radius: 7px;
     padding: 40px;
   }
-
-  #payment-message {
+  input {
+    border-radius: 6px;
+    margin-bottom: 6px;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    max-height: 44px;
+    font-size: 16px;
+    width: 100%;
+    background: white;
+    box-sizing: border-box;
+  }
+  .result-message {
+    line-height: 22px;
+    font-size: 16px;
+  }
+  .result-message a {
+    color: rgb(89, 111, 214);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hidden {
+    display: none;
+  }
+  #card-error {
     color: rgb(105, 115, 134);
     font-size: 16px;
     line-height: 20px;
-    padding-top: 12px;
+    margin-top: 12px;
     text-align: center;
   }
-
-  #payment-element {
-    margin-bottom: 24px;
+  #card-element {
+    border-radius: 4px 4px 0 0;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    max-height: 44px;
+    width: 100%;
+    background: white;
+    box-sizing: border-box;
   }
-
-  /* Buttons and links */
+  #payment-request-button {
+    margin-bottom: 32px;
+  }
   button {
-    background: #5469d4;
+    background: #ca6e6e;
     font-family: Arial, sans-serif;
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
     border: 0;
     padding: 12px 16px;
     font-size: 16px;
@@ -186,7 +243,6 @@ const Wrapper = styled.section`
     cursor: default;
   }
 
-  /* spinner/processing state, errors */
   .spinner,
   .spinner:before,
   .spinner:after {
@@ -252,9 +308,10 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width: 600px) {
     form {
-      width: 80vw;
-      min-width: initial;
+      width: 88vw;
+      //none
     }
   }
 `;
+
 export default StripeCheckout;

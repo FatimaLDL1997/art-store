@@ -47,7 +47,7 @@ export const hobbies = [
   {
     id: 6,
     img: "/images/art/balloon_LI.jpg",
-    text: "Air Baloon",
+    text: "Air Balloon",
     medium: "Digital",
     price: "2.0",
     size: "20x20cm",
