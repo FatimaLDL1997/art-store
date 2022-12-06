@@ -225,8 +225,12 @@ p {
     opacity: 0.8;
   }
   .card {
-    width: 78vw !important;
-    height: 50vh !important;
+    display: flex;
+    width: 20rem !important;
+    height: 15rem !important;
+  }
+  .container {
+    justify-content: center;
   }
   .hamburger-menu {
     display: block;
