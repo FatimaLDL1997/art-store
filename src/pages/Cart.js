@@ -15,6 +15,7 @@ const Cart = () => {
     setTotal,
     setCartItems,
     isloading,
+    calTotal,
   } = React.useContext(StoreContext);
 
   const [, updateState] = React.useState();
@@ -24,14 +25,13 @@ const Cart = () => {
     let clickedItem =
       e.currentTarget.parentElement.parentElement.parentElement.parentElement
         .children[0].alt;
-    console.log(
-      e.currentTarget.parentElement.parentElement.parentElement.parentElement
-        .children[0].alt
-    );
+
     let foundIndex = cartItems.findIndex((el) => el[0].name == clickedItem);
-    // console.log(foundIndex);
+
     setCartItems((prevItems) => {
       prevItems.splice(foundIndex, 1);
+      calTotal();
+
       return prevItems;
     });
     forceUpdate();
@@ -55,7 +55,7 @@ const Cart = () => {
             </Link>
             {cartItems.map((item, index) => {
               const { amount, price, id, name, src } = item[0];
-              // cons bvt { amount, price, id, name, src } = item;
+              // const { amount, price, id, name, src } = item;
               return (
                 <div key={index} className='item-container'>
                   <div className='item-side'>

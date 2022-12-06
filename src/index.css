@@ -172,6 +172,75 @@ p {
     width: 95vw;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .side-nav {
+    display: none !important;
+  }
+  .side-nav-gap {
+    display: none !important;
+  }
+
+  .left-side img {
+    margin: 0 !important;
+    width: 15rem !important ;
+  }
+  .disc {
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    width: 50% !important;
+    justify-content: center;
+  }
+  .disc .title {
+    text-align: center !important;
+  }
+  .store-space {
+    width: 50% !important;
+  }
+  .back-icon {
+    display: block !important;
+  }
+  .cart-amount {
+    font-size: 1rem !important;
+  }
+  .circle {
+    border-radius: 50%;
+    background: white;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2rem !important;
+    right: 1.2rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+    z-index: 2 !important;
+    opacity: 0.8;
+  }
+  .hamburger-menu {
+    display: block;
+    position: fixed;
+    top: 2rem !important;
+    background: rgb(222, 137, 137);
+    padding: 5rem 30vw 5rem 30vw;
+    border-radius: 5%;
+    animation: slowFadeIn 1s ease-in-out;
+  }
+
+  @keyframes slowFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.hamburger-menu {
+  display: none;
+}
 .loading-img {
   position: absolute;
   left: 50vw;
@@ -189,6 +258,16 @@ p {
 main {
   /* padding-bottom: 2rem; */
 }
+.back-icon {
+  position: fixed;
+  width: 6vw;
+  top: 3vh;
+  height: 3rem;
+  left: 0.5rem;
+  color: #ca6e6e;
+  z-index: 1 !important;
+  display: none;
+}
 .cart-icon {
   position: fixed;
   width: 6vw;
@@ -200,7 +279,7 @@ main {
 }
 .cart-amount {
   color: black;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0;
 }
 .circle {

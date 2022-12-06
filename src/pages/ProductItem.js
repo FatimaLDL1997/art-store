@@ -11,8 +11,17 @@ import { StoreProvider, StoreContext } from "../context/context";
 const ProductItem = () => {
   console.log("product");
   const { productId } = useParams();
-  const { amount, setAmount, cartItems, total, setTotal, setCartItems } =
-    React.useContext(StoreContext);
+  const {
+    amount,
+    setAmount,
+    cartItems,
+    total,
+    setTheTotal,
+    calTotal,
+    setCartItems,
+    error,
+    toggleError,
+  } = React.useContext(StoreContext);
 
   const product = hobbies.find((product) => product.id == productId);
   const { id, medium, size, text, price, category, img } = product;
@@ -24,8 +33,13 @@ const ProductItem = () => {
       console.log("prev" + prevAmnt);
 
       let tempAmount = prevAmnt - 1;
+
       if (tempAmount < 0) {
         tempAmount = 0;
+        toggleError(true, "Sorry, cannot go below 0 items!");
+        setTimeout(() => {
+          toggleError(); //sets the error msg back to default
+        }, 1000);
       }
       console.log("current" + tempAmount);
       return tempAmount;
@@ -40,6 +54,10 @@ const ProductItem = () => {
       let tempAmount = prevAmnt + 1;
       if (tempAmount > 10) {
         tempAmount = 10;
+        toggleError(true, "Sorry, cannot go above 10 items!");
+        setTimeout(() => {
+          toggleError(); //sets the error msg back to default
+        }, 1000);
       }
       console.log("current " + tempAmount);
 
@@ -69,14 +87,7 @@ const ProductItem = () => {
         //if not 0 items -> add to cart
         // console.log(cartItems.findIndex((el) => el[0].name == item.alt));
 
-        setTotal((prevTotal) => {
-          console.log("store total");
-          prevTotal = cartItems.reduce(
-            (a, v) => (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
-            0
-          );
-          return prevTotal;
-        });
+        calTotal();
         console.log("total:" + total);
 
         if (cartItems) {
@@ -146,6 +157,9 @@ const ProductItem = () => {
                   <BiPlus />
                 </button>
               </div>
+              <div className='error-container'>
+                {error.show ? <h1>{error.msg}</h1> : <h1>{error.msg} </h1>}
+              </div>
               <button onClick={(e) => addToCart(e)} className='btn btn-add'>
                 ADD TO CART
               </button>
@@ -165,16 +179,29 @@ const ProductItem = () => {
   );
 };
 const Wrapper = styled.nav`
+  .error-container h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-family: system-ui;
+    color: #bb4040;
+  }
+  .error-container {
+    margin-bottom: 2rem;
+  }
   .left-side {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .left-side img {
+    margin: 0 !important;
+  }
   .back {
     color: black;
     position: fixed;
     bottom: 3vh;
-    font-size: 3rem;
+    font-size: 5vh;
   }
   .back:hover {
     color: #ecd7d7;
@@ -213,7 +240,7 @@ const Wrapper = styled.nav`
     align-items: center;
     align-content: center;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   .adj-amount .plus,
@@ -247,6 +274,7 @@ const Wrapper = styled.nav`
     position: relative;
     right: 2vw;
     left: 2vw;
+    padding-bottom: 8rem;
   }
   .btn {
     position: absolute;
@@ -258,6 +286,7 @@ const Wrapper = styled.nav`
     font-size: 4rem;
     font-weight: 400;
     padding-bottom: 1rem;
+    line-height: 4rem;
   }
   .paintings-box img {
     margin-bottom: 2vh;
@@ -271,9 +300,28 @@ const Wrapper = styled.nav`
     position: absolute;
     left: 30vw;
     flex-wrap: wrap;
-    padding-top: 8rem;
+    padding-top: 10rem;
     align-items: flex-start;
     align-content: flex-start;
+    justify-content: center;
+  }
+  @media screen and (min-width: 200px) {
+    .paintings-box {
+      padding-top: 10rem !important;
+    }
+  }
+  @media screen and (min-width: 500px) {
+    .paintings-box {
+      padding-top: 10rem !important;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .paintings-box {
+      left: 0 !important;
+      display: flex;
+      justify-content: center;
+      padding-top: 5rem !important;
+    }
   }
 `;
 

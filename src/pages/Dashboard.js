@@ -2,19 +2,28 @@ import React, { useState } from "react";
 import { Navbar } from "../components";
 import styled from "styled-components";
 import loadingImage from "../images/preloader.gif";
-import { hobbies } from "../context/data/products";
+// import { hobbies } from "../context/data/products";
 import { StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line
 const Dashboard = () => {
-  const { setAmount, cartItems, isloading } = React.useContext(StoreContext);
-  const [products, setProducts] = useState(hobbies);
-  const [active, setActive] = useState("0");
+  const {
+    setAmount,
+    cartItems,
+    isloading,
+    products,
+    setProducts,
+    active,
+    setActive,
+    filterItems,
+    menuItems,
+  } = React.useContext(StoreContext);
+  // const [products, setProducts] = useState(hobbies);
 
   const categories = ["all", ...new Set(products.map((item) => item.category))];
 
   console.log(cartItems);
-  const [menuItems, setMenuItems] = useState(products);
+  // const [menuItems, setMenuItems] = useState(products);
 
   if (isloading) {
     return (
@@ -26,19 +35,6 @@ const Dashboard = () => {
       </main>
     );
   }
-  const filterItems = (item, index) => {
-    if (item === "all") {
-      setMenuItems(products);
-      console.log(menuItems);
-      setActive(index);
-
-      return;
-    }
-
-    const newItems = products.filter((product) => product.category === item);
-    setMenuItems(newItems);
-    setActive(index);
-  };
 
   return (
     <main>
