@@ -73,6 +73,7 @@ body {
   line-height: 1.5;
   font-size: 0.875rem;
   overflow-x: hidden;
+  touch-action: manipulation;
 }
 ul {
   list-style-type: none;
@@ -198,8 +199,13 @@ p {
   .store-space {
     width: 50% !important;
   }
-  .back-icon {
+  .burger-icon {
     display: block !important;
+    right: 0rem !important;
+    top: 0.5rem !important;
+  }
+  .cart-icon {
+    top: 0.5rem !important;
   }
   .cart-amount {
     font-size: 1rem !important;
@@ -218,12 +224,16 @@ p {
     z-index: 2 !important;
     opacity: 0.8;
   }
+  .card {
+    width: 78vw !important;
+    height: 50vh !important;
+  }
   .hamburger-menu {
     display: block;
     position: fixed;
     top: 2rem !important;
     background: rgb(222, 137, 137);
-    padding: 5rem 30vw 5rem 30vw;
+    padding: 1rem 30vw 1rem 30vw;
     border-radius: 5%;
     animation: slowFadeIn 1s ease-in-out;
   }
@@ -258,7 +268,7 @@ p {
 main {
   /* padding-bottom: 2rem; */
 }
-.back-icon {
+.burger-icon {
   position: fixed;
   width: 6vw;
   top: 3vh;

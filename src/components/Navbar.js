@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 import { StoreContext } from "../context/context";
 import { TiThMenu } from "react-icons/ti";
+import { GiCrossMark } from "react-icons/gi";
+import { TiArrowBack } from "react-icons/ti";
 
 const Navbar = () => {
   const {
@@ -22,28 +24,36 @@ const Navbar = () => {
     menuItems,
     setMenuItems,
   } = React.useContext(StoreContext);
+
   const categories = ["all", ...new Set(products.map((item) => item.category))];
   const [clicked, setClicked] = useState(false);
-  // console.log({ isAuthenticated, user, isLoading });
+  const [changeIcon, setChangeIcon] = useState(false);
   const isUser = isAuthenticated && user;
-
   const handleBrgrMenu = () => {
     let menu = document.getElementsByClassName("hamburger-menu");
-    console.log(menu[0].style);
     if (clicked) {
       console.log("clicked");
       menu[0].style.display = "block";
-      console.log(menu[0].style.display);
     } else {
       console.log("not Clicked");
       menu[0].style.display = "none";
-      console.log(menu[0].style.display);
     }
   };
 
   useEffect(() => {
     handleBrgrMenu();
   }, [clicked]);
+
+  useEffect(() => {
+    let onSingleProductPage =
+      document.getElementsByClassName("adj-amount").length;
+    if (onSingleProductPage == 1) {
+      setChangeIcon(true);
+      console.log(onSingleProductPage);
+    } else {
+      setChangeIcon(false);
+    }
+  });
 
   return (
     <Wrapper>
@@ -54,7 +64,14 @@ const Navbar = () => {
             setClicked(!clicked);
           }}
         >
-          <TiThMenu className='back-icon' />
+          {!changeIcon &&
+            !clicked && ( // on the main page
+              <TiThMenu className='burger-icon' />
+            )}
+          {!changeIcon && clicked && <GiCrossMark className='burger-icon' />}
+          {changeIcon && ( // on the single product page
+            <TiArrowBack className='burger-icon' />
+          )}
         </Link>
 
         <div className='top-nav'>
@@ -155,6 +172,7 @@ const Wrapper = styled.nav`
     display: flex;
     justify-content: center;
     flex-direction: row;
+    align-items: center;
   }
   .logout-icon {
     color: #5d8061;
@@ -163,6 +181,8 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: center;
     align-content: center;
+    position: relative;
+    z-index: 4 !important;
   }
 `;
 

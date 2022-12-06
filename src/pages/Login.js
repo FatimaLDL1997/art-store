@@ -43,7 +43,7 @@ const Wrapper = styled.section`
     align-items: center;
   }
   img {
-    width: 100vw;
+    width: 167vw;
     height: 100vh;
   }
   h1 {
