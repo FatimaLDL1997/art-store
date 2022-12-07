@@ -225,9 +225,8 @@ p {
     opacity: 0.8;
   }
   .card {
-    display: flex;
-    width: 20rem !important;
-    height: 15rem !important;
+    width: 70vw !important;
+    height: 40vh !important;
   }
   .container {
     justify-content: center;
