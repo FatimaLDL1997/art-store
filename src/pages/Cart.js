@@ -173,6 +173,7 @@ const Wrapper = styled.nav`
   .empty-back-icon {
     font-size: 2.5rem;
     margin: 1rem;
+    color: black;
   }
   .back-icon {
     font-size: 3rem;
