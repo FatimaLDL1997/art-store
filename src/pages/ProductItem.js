@@ -249,6 +249,7 @@ const Wrapper = styled.nav`
     cursor: pointer;
     border: none;
     background: none;
+    color: black;
   }
   .adj-amount .plus:hover,
   .adj-amount .minus:hover {
