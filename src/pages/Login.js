@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import loginImg from "../images/login-img.png";
+
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
+
+  useEffect(() => {
+    let data = window.performance.getEntriesByType("navigation")[0].type;
+    console.log(data);
+    if (data == "reload") {
+      console.log("reloaded");
+      window.location.assign("/");
+    }
+  }, []);
 
   return (
     <Wrapper>
