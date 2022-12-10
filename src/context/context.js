@@ -14,6 +14,7 @@ const StoreProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [menuItems, setMenuItems] = useState(products);
+  const [clicked, setClicked] = useState(false);
 
   //error
   const [error, setError] = useState({ show: false, msg: "" });
@@ -22,12 +23,14 @@ const StoreProvider = ({ children }) => {
       setMenuItems(products);
       console.log(menuItems);
       setActive(index);
-
+      setClicked(false);
       return;
     }
 
     const newItems = products.filter((product) => product.category === item);
     setMenuItems(newItems);
+    setClicked(false);
+
     setActive(index);
   };
   function toggleError(show = false, msg = " ") {
@@ -38,16 +41,20 @@ const StoreProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  const calTotal = () => {
-    setTotal((prevTotal) => {
-      console.log("store total");
-      prevTotal = cartItems.reduce(
-        (a, v) => (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
-        0
-      );
-      return prevTotal;
-    });
-  };
+  function calTotal(items) {
+    console.log(items);
+    if (items) {
+      setTotal((prevTotal) => {
+        console.log("store total");
+        prevTotal = items.reduce(
+          (a, v) => (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
+          0
+        );
+        console.log(prevTotal);
+        return prevTotal;
+      });
+    }
+  }
   return (
     <StoreContext.Provider
       value={{
@@ -74,6 +81,8 @@ const StoreProvider = ({ children }) => {
         toggleError,
         menuItems,
         setMenuItems,
+        clicked,
+        setClicked,
       }}
     >
       {children}
