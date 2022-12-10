@@ -16,6 +16,7 @@ const Cart = () => {
     setCartItems,
     isloading,
     calTotal,
+    setClicked,
   } = React.useContext(StoreContext);
 
   const [, updateState] = React.useState();
@@ -30,10 +31,10 @@ const Cart = () => {
 
     setCartItems((prevItems) => {
       prevItems.splice(foundIndex, 1);
-      console.log(cartItems);
+      // console.log(cartItems);
       calTotal(cartItems); //pass the updated cartitems after deletion
 
-      console.log(total);
+      // console.log(total);
       return prevItems;
     });
     forceUpdate();
@@ -88,12 +89,7 @@ const Cart = () => {
               <h1>${total}</h1>
             </div>
             <Link to={{ pathname: "/checkout" }} className='checkout-container'>
-              <button
-                onClick={(e) => console.log("checkout")}
-                className='btn btn-checkout'
-              >
-                CHECKOUT
-              </button>
+              <button className='btn btn-checkout'>CHECKOUT</button>
             </Link>
           </div>
         )}

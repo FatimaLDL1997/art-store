@@ -15,13 +15,14 @@ const StoreProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [menuItems, setMenuItems] = useState(products);
   const [clicked, setClicked] = useState(false);
+  const [changeIcon, setChangeIcon] = useState(false);
 
   //error
   const [error, setError] = useState({ show: false, msg: "" });
   const filterItems = (item, index) => {
     if (item === "all") {
       setMenuItems(products);
-      console.log(menuItems);
+      // console.log(menuItems);
       setActive(index);
       setClicked(false);
       return;
@@ -42,15 +43,15 @@ const StoreProvider = ({ children }) => {
   };
 
   function calTotal(items) {
-    console.log(items);
+    // console.log(items);
     if (items) {
       setTotal((prevTotal) => {
-        console.log("store total");
+        // console.log("store total");
         prevTotal = items.reduce(
           (a, v) => (a = a + parseInt(v[0].price) * parseInt(v[0].amount)),
           0
         );
-        console.log(prevTotal);
+        // console.log(prevTotal);
         return prevTotal;
       });
     }
@@ -83,6 +84,8 @@ const StoreProvider = ({ children }) => {
         setMenuItems,
         clicked,
         setClicked,
+        changeIcon,
+        setChangeIcon,
       }}
     >
       {children}

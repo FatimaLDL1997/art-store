@@ -9,7 +9,7 @@ import { BiArrowBack, BiMinus, BiPlus } from "react-icons/bi";
 import { StoreProvider, StoreContext } from "../context/context";
 
 const ProductItem = () => {
-  console.log("product");
+  // console.log("product");
   const { productId } = useParams();
   const {
     amount,
@@ -21,16 +21,20 @@ const ProductItem = () => {
     setCartItems,
     error,
     toggleError,
+    clicked,
+    setClicked,
+    changeIcon,
+    setchangeIcon,
   } = React.useContext(StoreContext);
 
   const product = hobbies.find((product) => product.id == productId);
   const { id, medium, size, text, price, category, img } = product;
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const handleDec = () => {
     setAmount((prevAmnt) => {
-      console.log("prev" + prevAmnt);
+      // console.log("prev" + prevAmnt);
 
       let tempAmount = prevAmnt - 1;
 
@@ -41,7 +45,7 @@ const ProductItem = () => {
           toggleError(); //sets the error msg back to default
         }, 1000);
       }
-      console.log("current" + tempAmount);
+      // console.log("current" + tempAmount);
       return tempAmount;
     });
   };
@@ -49,7 +53,7 @@ const ProductItem = () => {
   const handleInc = () => {
     // let newItem = e.currentTarget.parentElement.parentElement.children[0];
     setAmount((prevAmnt) => {
-      console.log("prev " + prevAmnt);
+      // console.log("prev " + prevAmnt);
 
       let tempAmount = prevAmnt + 1;
       if (tempAmount > 10) {
@@ -59,14 +63,14 @@ const ProductItem = () => {
           toggleError(); //sets the error msg back to default
         }, 1000);
       }
-      console.log("current " + tempAmount);
+      // console.log("current " + tempAmount);
 
       return tempAmount;
     });
   };
 
   const addToCart = (e) => {
-    console.log("add to cart");
+    // console.log("add to cart");
     let item =
       e.currentTarget.parentElement.parentElement.children[0].children[0];
 
@@ -93,13 +97,13 @@ const ProductItem = () => {
           if (cartItems.length == 0 || foundIndex < 0) {
             prevItems.push(tempItem);
             cartAmount[0].innerHTML = cartItems.length;
-            console.log("first time item");
-            console.log(cartItems);
+            // console.log("first time item");
+            // console.log(cartItems);
             calTotal(cartItems);
 
             return prevItems;
           } else if (foundIndex >= 0) {
-            console.log("found same item");
+            // console.log("found same item");
             prevItems.splice(foundIndex, 1, tempItem);
             calTotal(cartItems);
             return prevItems;

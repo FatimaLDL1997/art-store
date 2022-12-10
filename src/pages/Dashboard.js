@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   const categories = ["all", ...new Set(products.map((item) => item.category))];
 
-  console.log(cartItems);
+  // console.log(cartItems);
   // const [menuItems, setMenuItems] = useState(products);
 
   if (isloading) {

@@ -52,9 +52,9 @@ const CheckoutForm = () => {
         JSON.stringify({ total })
       );
       setClientSecret(data.data.clientSecret);
-      console.log(clientSecret);
+      // console.log(clientSecret);
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
   useEffect(() => {

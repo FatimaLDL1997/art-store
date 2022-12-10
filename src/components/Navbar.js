@@ -25,21 +25,23 @@ const Navbar = () => {
     setMenuItems,
     clicked,
     setClicked,
+    changeIcon,
+    setChangeIcon,
   } = React.useContext(StoreContext);
 
   const categories = ["all", ...new Set(products.map((item) => item.category))];
-  const [changeIcon, setChangeIcon] = useState(false);
   const isUser = isAuthenticated && user;
   const handleBrgrMenu = () => {
     let menu = document.getElementsByClassName("hamburger-menu");
     let main = document.getElementsByClassName("main");
-    console.log(main.length);
+    // console.log(main.length);
     if (clicked) {
       console.log("clicked");
       if (main.length > 0) {
         main[0].style.position = "relative";
         main[0].style.overflow = "hidden";
       }
+      setChangeIcon(false);
 
       menu[0].style.display = "block";
     } else {
@@ -47,13 +49,26 @@ const Navbar = () => {
         main[0].style.position = "absolute";
         main[0].style.overflow = "visible";
       }
+      setChangeIcon(false);
+
       console.log("not Clicked");
       menu[0].style.display = "none";
     }
   };
 
+  const handleBack = () => {
+    setChangeIcon(true);
+    setClicked(false);
+    console.log("back______________");
+    console.log("changeIcon: " + changeIcon);
+    console.log("clicked: " + clicked);
+  };
+
   useEffect(() => {
     handleBrgrMenu();
+    console.log("burger____________");
+    console.log("changeIcon: " + changeIcon);
+    console.log("clicked: " + clicked);
   }, [clicked]);
 
   useEffect(() => {
@@ -61,7 +76,7 @@ const Navbar = () => {
       document.getElementsByClassName("adj-amount").length;
     if (onSingleProductPage == 1) {
       setChangeIcon(true);
-      console.log(onSingleProductPage);
+      // console.log(onSingleProductPage);
     } else {
       setChangeIcon(false);
     }
@@ -70,19 +85,26 @@ const Navbar = () => {
   return (
     <Wrapper>
       <div className='all-nav'>
-        <Link
-          to={`/`}
-          onClick={() => {
-            setClicked(!clicked);
-          }}
-        >
+        <Link to={`/`}>
           {!changeIcon &&
             !clicked && ( // on the main page
-              <TiThMenu className='burger-icon' />
+              <TiThMenu
+                className='burger-icon'
+                onClick={() => {
+                  setClicked(!clicked);
+                }}
+              />
             )}
-          {!changeIcon && clicked && <GiCrossMark className='burger-icon' />}
+          {!changeIcon && clicked && (
+            <GiCrossMark
+              className='burger-icon'
+              onClick={() => {
+                setClicked(!clicked);
+              }}
+            />
+          )}
           {changeIcon && ( // on the single product page
-            <TiArrowBack className='burger-icon' />
+            <TiArrowBack className='burger-icon' onClick={() => handleBack()} />
           )}
         </Link>
 
@@ -108,7 +130,7 @@ const Navbar = () => {
           <Link to={`/cart`}>
             <HiShoppingCart className='cart-icon' />
             <div className='circle'>
-              {console.log(cartItems.length)}
+              {/* {console.log(cartItems.length)} */}
               <h1 className='cart-amount'>
                 {!cartItems ? 0 : cartItems.length}
               </h1>
