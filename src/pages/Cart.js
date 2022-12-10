@@ -113,7 +113,7 @@ const Wrapper = styled.nav`
   }
   .btn-checkout {
     position: relative !important;
-    right: 2rem;
+    right: 10rem;
     font-size: 1rem !important;
     background: #ca6e6e;
   }
@@ -226,6 +226,9 @@ const Wrapper = styled.nav`
     align-items: center;
   }
 @media screen and (max-width: 800px) {
+  .btn-checkout {
+    right: 2rem !important;
+  }
   .title {
     font-size:3rem;
   }
