@@ -140,6 +140,8 @@ const Wrapper = styled.nav`
     margin: 10rem;
     background: #ae5c5c;
     margin-top: 2rem;
+    margin-bottom: 2rem ; 
+
   }
   .total-container h1 {
     font-size: 2rem;
@@ -226,6 +228,14 @@ const Wrapper = styled.nav`
     align-items: center;
   }
 @media screen and (max-width: 800px) {
+  .container-text-del {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .item-name {
+    margin-bottom: -1rem; 
+  }
   .btn-checkout {
     right: 2rem !important;
   }
@@ -236,7 +246,7 @@ const Wrapper = styled.nav`
     margin: 2rem !important;
     flex-direction: column; 
   }
-   .total-side {
+  .total-side {
     justify-content: center ; 
   }
   .total-container {
