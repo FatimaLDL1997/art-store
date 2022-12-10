@@ -107,13 +107,13 @@ const Wrapper = styled.nav`
     flex-direction: row;
   }
   .item-delete{
-        margin: 1.3rem;
-    font-size: 2rem;
-}
-.item-delete:hover{
-      color:#ecd7d7;
-     cursor: pointer; 
-}
+          margin: 1.3rem;
+      font-size: 2rem;
+  }
+  .item-delete:hover{
+        color:#ecd7d7;
+      cursor: pointer; 
+  }
   }
   .btn-checkout {
     position: relative !important;
@@ -155,6 +155,8 @@ const Wrapper = styled.nav`
     margin: 10rem;
     justify-content: space-between;
     margin-bottom: 2rem;
+    margin-top: 2rem;
+
 
   }
   .item-text-container {
@@ -185,7 +187,7 @@ const Wrapper = styled.nav`
     font-size: 2rem;
     margin-left: 1rem;
     position: absolute;
-    top: 4rem;
+    top: 6rem;
     left: 1rem;
     color: black;
   }
