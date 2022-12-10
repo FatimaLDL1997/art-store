@@ -30,8 +30,10 @@ const Cart = () => {
 
     setCartItems((prevItems) => {
       prevItems.splice(foundIndex, 1);
-      calTotal();
+      console.log(cartItems);
+      calTotal(cartItems); //pass the updated cartitems after deletion
 
+      console.log(total);
       return prevItems;
     });
     forceUpdate();
@@ -133,13 +135,15 @@ const Wrapper = styled.nav`
     margin: 2rem;
     margin-top: 3rem;
     font-family: "Dancing Script", cursive;
+    font-size:3rem;
   }
   .total-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem;
+    margin: 10rem;
     background: #ae5c5c;
+    margin-top: 2rem;
   }
   .total-container h1 {
     font-size: 2rem;
@@ -148,8 +152,10 @@ const Wrapper = styled.nav`
   .item-container {
     display: flex;
     background: #ca6e6e;
-    margin: 2rem;
+    margin: 10rem;
     justify-content: space-between;
+    margin-bottom: 2rem;
+
   }
   .item-text-container {
     display: flex;
@@ -171,16 +177,17 @@ const Wrapper = styled.nav`
     height: 100vh;
   }
   .empty-back-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 1rem;
     color: black;
   }
   .back-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-left: 1rem;
     position: absolute;
     top: 4rem;
     left: 1rem;
+    color: black;
   }
   .empty-back-icon:hover {
     color: #ca6e6e;
@@ -220,5 +227,42 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
   }
+@media screen and (max-width: 800px) {
+  .title {
+    font-size:3rem;
+  }
+  .item-container {
+    margin: 2rem !important;
+    flex-direction: column; 
+  }
+   .total-side {
+    justify-content: center ; 
+  }
+  .total-container {
+    margin: 2rem !important;
+  }
+  .item-img  {
+    margin: 3rem !important; 
+    width:10rem !important;
+    margin-bottom: 0rem !important;
+  }
+  .item-text-container {
+    align-items: center; 
+  }
+  .item-side {
+    justify-content: center; 
+  }
+  .item-price {
+    padding-bottom: 2rem; 
+    margin: 0; 
+  }
+  .total-container h1 {
+    font-size: 1.5rem !important; 
+  }
+  .item-delete {
+    display: flex;
+    align-items: center;
+  }
+}
 `;
 export default Cart;

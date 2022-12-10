@@ -234,11 +234,18 @@ p {
   .hamburger-menu {
     display: block;
     position: fixed;
+    height: 85vh;
     top: 2rem !important;
-    background: rgb(222, 137, 137);
-    padding: 1rem 30vw 1rem 30vw;
-    border-radius: 5%;
+    background: rgb(174 195 178);
+    padding: 1rem 15vw 1rem 15vw;
     animation: slowFadeIn 1s ease-in-out;
+    margin-top: 1rem;
+  }
+  .hamburger-menu h4 {
+    font-size: large !important;
+  }
+  .hamburger-menu h4 {
+    padding-top: 8vh !important;
   }
 
   @keyframes slowFadeIn {

@@ -150,6 +150,16 @@ const StripeCheckout = () => {
 };
 
 const Wrapper = styled.section`
+  @media screen and (max-width: 800px) {
+    .title-success,
+    .title-start {
+      font-size: 1.5rem !important;
+    }
+    .title p {
+      font-size: 1rem !important;
+      padding: 0rem 1rem 0rem 1rem;
+    }
+  }
   .title-success,
   .title-start {
     font-family: "Dancing Script", cursive;

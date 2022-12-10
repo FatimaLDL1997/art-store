@@ -87,22 +87,21 @@ const ProductItem = () => {
         //if not 0 items -> add to cart
         // console.log(cartItems.findIndex((el) => el[0].name == item.alt));
 
-        calTotal();
-        console.log("total:" + total);
-
         if (cartItems) {
-          console.log(cartItems);
           let foundIndex = cartItems.findIndex((el) => el[0].name == item.alt);
 
           if (cartItems.length == 0 || foundIndex < 0) {
             prevItems.push(tempItem);
             cartAmount[0].innerHTML = cartItems.length;
+            console.log("first time item");
+            console.log(cartItems);
+            calTotal(cartItems);
 
             return prevItems;
           } else if (foundIndex >= 0) {
             console.log("found same item");
             prevItems.splice(foundIndex, 1, tempItem);
-            console.log(prevItems);
+            calTotal(cartItems);
             return prevItems;
           }
         }

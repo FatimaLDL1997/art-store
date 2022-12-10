@@ -37,7 +37,7 @@ const Dashboard = () => {
   }
 
   return (
-    <main>
+    <main className='main'>
       <Wrapper>
         <div className='fixed-content'>
           <div className='side-nav-gap'></div>

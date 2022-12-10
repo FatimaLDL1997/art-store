@@ -23,18 +23,30 @@ const Navbar = () => {
     filterItems,
     menuItems,
     setMenuItems,
+    clicked,
+    setClicked,
   } = React.useContext(StoreContext);
 
   const categories = ["all", ...new Set(products.map((item) => item.category))];
-  const [clicked, setClicked] = useState(false);
   const [changeIcon, setChangeIcon] = useState(false);
   const isUser = isAuthenticated && user;
   const handleBrgrMenu = () => {
     let menu = document.getElementsByClassName("hamburger-menu");
+    let main = document.getElementsByClassName("main");
+    console.log(main.length);
     if (clicked) {
       console.log("clicked");
+      if (main.length > 0) {
+        main[0].style.position = "relative";
+        main[0].style.overflow = "hidden";
+      }
+
       menu[0].style.display = "block";
     } else {
+      if (main.length > 0) {
+        main[0].style.position = "absolute";
+        main[0].style.overflow = "visible";
+      }
       console.log("not Clicked");
       menu[0].style.display = "none";
     }
@@ -104,6 +116,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='hamburger-menu'>
+          <h4>CATEGORIES</h4>
           {categories.map((item, index) => {
             return (
               <h5
@@ -111,9 +124,7 @@ const Navbar = () => {
                 className={
                   active === index ? "category-btn" : "category-btn-white"
                 }
-                onClick={
-                  (() => filterItems(item, index), () => setClicked(false))
-                }
+                onClick={() => filterItems(item, index)}
               >
                 {item}
               </h5>
@@ -139,6 +150,20 @@ const Wrapper = styled.nav`
   left: 25vw;
   right: 75vw;
 
+  .category-btn-white {
+    color: white;
+    padding-bottom: 1rem;
+  }
+  .category-btn-white:hover {
+    cursor: pointer;
+    color: #1a0b0b;
+  }
+  .category-btn:hover {
+    cursor: pointer;
+  }
+  .category-btn {
+    padding-bottom: 1rem;
+  }
   h4 {
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;
