@@ -237,12 +237,20 @@ p {
     height: fit-content;
     top: 2rem !important;
     background: rgb(174 195 178);
-    padding: 0rem 0vw 2rem 0vw;
+    padding: 0vh 12% 2vh 12%;
     animation: slowFadeIn 1s ease-in-out;
     margin-top: 1rem;
+    z-index: 4;
   }
   .hamburger-menu h4 {
     font-size: large !important;
+  }
+  .hamburger-menu h5 {
+    font-size: 3vh;
+    font-weight: 300;
+  }
+  .hamburger-menu h5:nth-child(2) {
+    padding-top: 2rem;
   }
   .hamburger-menu h4 {
     padding-top: 8vh !important;
