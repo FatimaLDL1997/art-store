@@ -231,6 +231,15 @@ const Wrapper = styled.nav`
     position: relative;
     z-index: 4 !important;
   }
+  @media screen and (max-width: 800px) {
+    .logout-icon {
+      font-size: 1.5rem;
+    }
+    .top-nav img {
+      height: 7vw;
+      width: 7vw !important;
+    }
+  }
 `;
 
 export default Navbar;
