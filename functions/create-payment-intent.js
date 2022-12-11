@@ -10,7 +10,7 @@ exports.handler = async function (event, context) {
       // Create a PaymentIntent with the order amount and currency
       const paymentIntent = await stripe.paymentIntents.create({
         amount: total * 100,
-        items: cartItems,
+        data: cartItems,
         currency: "cad",
       });
       return {
