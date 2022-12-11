@@ -16,7 +16,7 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
-  const { total, isAuthenticated, loginWithRedirect, logout, user, clearCart } =
+  const { total, isAuthenticated, cartItems, user, clearCart } =
     React.useContext(StoreContext);
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -49,7 +49,7 @@ const CheckoutForm = () => {
     try {
       const data = await axios.post(
         "/.netlify/functions/create-payment-intent",
-        JSON.stringify({ total })
+        JSON.stringify({ total, cartItems })
       );
       setClientSecret(data.data.clientSecret);
       // console.log(clientSecret);
