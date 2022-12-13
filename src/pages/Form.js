@@ -367,7 +367,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 3rem;
   }
   .label {
     padding-left: 1rem;
@@ -385,7 +384,7 @@ const Wrapper = styled.div`
   }
   .missing-mark {
     position: absolute;
-    margin-left: 19rem;
+    margin-left: 17rem;
     color: red;
     display: none;
   }
