@@ -318,14 +318,19 @@ const Form = () => {
             />
             <div className='missing-mark'>*</div>
           </div>
-
-          {!submitted ? (
-            <button onClick={handleSubmit} className='btn' type='submit'>
-              Submit
-            </button>
-          ) : (
-            <Navigate replace to='/checkout' />
-          )}
+          <div className='box'>
+            {!submitted ? (
+              <button
+                onClick={handleSubmit}
+                className='btn btn-checkout'
+                type='submit'
+              >
+                Submit
+              </button>
+            ) : (
+              <Navigate replace to='/checkout' />
+            )}
+          </div>
         </form>
       </div>
     </Wrapper>
@@ -342,7 +347,16 @@ const Wrapper = styled.div`
   .form-container {
     padding: 2rem;
   }
-
+  .btn-checkout {
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+    font-size: 1rem !important;
+    background: #ca6e6e;
+  }
+  .btn-checkout:hover {
+    background: #da9c9c;
+  }
   .box {
     display: flex;
     flex-direction: row;
@@ -366,7 +380,8 @@ const Wrapper = styled.div`
   }
   .input {
     position: absolute;
-    margin-left: 8rem;
+    margin-left: 7rem;
+    width: 10rem;
   }
   .missing-mark {
     position: absolute;
