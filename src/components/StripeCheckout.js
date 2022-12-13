@@ -99,8 +99,8 @@ const CheckoutForm = () => {
           email: email,
           phone: phone,
           address: {
-            country: country == "canada" || country == "Canada" ? "CA" : "CA",
-            state: state,
+            country: "CA",
+            state: "ON",
             postal_code: postalCode,
             line1: line1,
             line2: line2,

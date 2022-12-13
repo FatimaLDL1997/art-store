@@ -327,10 +327,6 @@ const Form = () => {
             <Navigate replace to='/checkout' />
           )}
         </form>
-
-        <Link to={{ pathname: "/checkout" }} className='checkout-container'>
-          <button className='btn btn-checkout'>CHECKOUT</button>
-        </Link>
       </div>
     </Wrapper>
   );
