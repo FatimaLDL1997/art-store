@@ -16,6 +16,16 @@ const StoreProvider = ({ children }) => {
   const [menuItems, setMenuItems] = useState(products);
   const [clicked, setClicked] = useState(false);
   const [changeIcon, setChangeIcon] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [city, setCity] = useState("");
 
   //error
   const [error, setError] = useState({ show: false, msg: "" });
@@ -86,6 +96,26 @@ const StoreProvider = ({ children }) => {
         setClicked,
         changeIcon,
         setChangeIcon,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        email,
+        setEmail,
+        phone,
+        setPhone,
+        country,
+        setCountry,
+        state,
+        setState,
+        postalCode,
+        setPostalCode,
+        line1,
+        setLine1,
+        line2,
+        setLine2,
+        city,
+        setCity,
       }}
     >
       {children}

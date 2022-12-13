@@ -4,6 +4,7 @@ import ProductItem from "./pages/ProductItem";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Form from "./pages/Form";
 
 function App() {
   return (
@@ -42,6 +43,15 @@ function App() {
             element={
               <PrivateRoute>
                 <Checkout />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path='/form'
+            element={
+              <PrivateRoute>
+                <Form />
               </PrivateRoute>
             }
           />

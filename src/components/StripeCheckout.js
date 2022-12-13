@@ -12,12 +12,32 @@ import axios from "axios";
 import { StoreContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 
-const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY, {
+  locale: "auto",
+});
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
-  const { total, isAuthenticated, cartItems, user, clearCart } =
-    React.useContext(StoreContext);
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    setCountry,
+    state,
+    postalCode,
+    line1,
+    line2,
+    city,
+
+    total,
+    isAuthenticated,
+    cartItems,
+    user,
+    clearCart,
+  } = React.useContext(StoreContext);
+
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
@@ -49,7 +69,7 @@ const CheckoutForm = () => {
     try {
       const data = await axios.post(
         "/.netlify/functions/create-payment-intent",
-        JSON.stringify({ total, cartItems })
+        JSON.stringify({ total, cartItems, user })
       );
       setClientSecret(data.data.clientSecret);
       // console.log(clientSecret);
@@ -74,7 +94,21 @@ const CheckoutForm = () => {
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
+        billing_details: {
+          name: firstName + " " + lastName,
+          email: email,
+          phone: phone,
+          address: {
+            country: country == "canada" || country == "Canada" ? "CA" : "CA",
+            state: state,
+            postal_code: postalCode,
+            line1: line1,
+            line2: line2,
+            city: city,
+          },
+        },
       },
+      // receipt_email: "fatimalabade@gmail.com",
     });
 
     if (payload.error) {
@@ -91,7 +125,7 @@ const CheckoutForm = () => {
     }
   };
   const isUser = isAuthenticated && user;
-
+  console.log(user);
   return (
     <div className='checkout-container'>
       {succeeded ? (

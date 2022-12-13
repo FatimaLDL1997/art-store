@@ -88,7 +88,7 @@ const Cart = () => {
               <h1>Total</h1>
               <h1>${total}</h1>
             </div>
-            <Link to={{ pathname: "/checkout" }} className='checkout-container'>
+            <Link to={{ pathname: "/form" }} className='checkout-container'>
               <button className='btn btn-checkout'>CHECKOUT</button>
             </Link>
           </div>
