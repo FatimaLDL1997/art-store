@@ -108,6 +108,7 @@ const CheckoutForm = () => {
           },
         },
       },
+
       // receipt_email: "fatimalabade@gmail.com",
     });
 

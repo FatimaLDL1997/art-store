@@ -5,6 +5,14 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 
 exports.handler = async function (event, context) {
   const { total, cartItems, user } = JSON.parse(event.body);
+  // console.log(cartItems[0][0].name + cartItems[0][0].amount);
+  let cartDesc = [];
+  cartItems.map((item) => {
+    console.log(item[0].name);
+
+    cartDesc.push(`${item[0].name + " " + item[0].amount}`);
+  });
+  console.log(typeof cartDesc.join(" "));
 
   if (event.body) {
     try {
@@ -12,6 +20,7 @@ exports.handler = async function (event, context) {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: total * 100,
         currency: "cad",
+        description: cartDesc.join("+"),
       });
 
       return {
