@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { StoreContext } from "../context/context";
 import styled from "styled-components";
 import loginImg from "../images/login-img.png";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginAsGuest, setLoginAsGuest, loginWithRedirect } =
+    React.useContext(StoreContext);
+
+  console.log(loginAsGuest);
 
   useEffect(() => {
+    //solves the issue with refreshing and 404 error
     let data = window.performance.getEntriesByType("navigation")[0].type;
     console.log(data);
+
     if (data == "reload") {
       console.log("reloaded");
       window.location.assign("/");
@@ -23,6 +29,9 @@ const Login = () => {
           <h1>Welcome!</h1>
           <button className='btn' onClick={loginWithRedirect}>
             Login/Sign Up
+          </button>
+          <button className='btn' onClick={() => setLoginAsGuest(true)}>
+            Login As Guest
           </button>
         </div>
       </div>

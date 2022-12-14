@@ -27,6 +27,8 @@ const Navbar = () => {
     setClicked,
     changeIcon,
     setChangeIcon,
+    setLoginAsGuest,
+    loginAsGuest,
   } = React.useContext(StoreContext);
 
   const categories = ["all", ...new Set(products.map((item) => item.category))];
@@ -114,11 +116,12 @@ const Navbar = () => {
             <h4>welcome, {user.nickname.toUpperCase()}</h4>
           )}
           {!isUser ? (
-            <button onClick={loginWithRedirect}>Login</button>
+            <button onClick={loginWithRedirect}>Hello Guest! Login?</button>
           ) : (
             <button
               onClick={() => {
                 clearCart();
+                setLoginAsGuest(false);
                 logout({ returnTo: window.location.origin });
               }}
             >

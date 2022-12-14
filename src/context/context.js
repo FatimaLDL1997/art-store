@@ -5,8 +5,10 @@ import { hobbies } from "../context/data/products";
 const StoreContext = React.createContext();
 
 const StoreProvider = ({ children }) => {
-  //request loading
+  //auth0
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+
+  //others
   const [products, setProducts] = useState(hobbies);
   const [active, setActive] = useState("0");
   const [isloading, setIsLoading] = useState(false);
@@ -14,8 +16,12 @@ const StoreProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [menuItems, setMenuItems] = useState(products);
+
+  //menu and back icon toggle variables
   const [clicked, setClicked] = useState(false);
   const [changeIcon, setChangeIcon] = useState(false);
+
+  //form for shipping details
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,6 +35,10 @@ const StoreProvider = ({ children }) => {
 
   //error
   const [error, setError] = useState({ show: false, msg: "" });
+
+  //guest login
+  const [loginAsGuest, setLoginAsGuest] = useState(false);
+
   const filterItems = (item, index) => {
     if (item === "all") {
       setMenuItems(products);
@@ -116,6 +126,8 @@ const StoreProvider = ({ children }) => {
         setLine2,
         city,
         setCity,
+        loginAsGuest,
+        setLoginAsGuest,
       }}
     >
       {children}
