@@ -1,10 +1,17 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { StoreContext } from "../context/context";
 
 const PrivateRoute = ({ children }) => {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, loginAsGuest } =
+    React.useContext(StoreContext);
   const isUser = isAuthenticated && user;
+  if (loginAsGuest) {
+    console.log(loginAsGuest);
+  } else {
+    return children;
+  }
+
   if (!isUser) {
     return <Navigate to='/login' />;
   }
