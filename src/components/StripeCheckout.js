@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { StoreContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
+import CheckoutNavbar from "../components/CheckoutNavbar";
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY, {
   locale: "auto",
@@ -23,9 +24,6 @@ const CheckoutForm = () => {
     lastName,
     email,
     phone,
-    country,
-    setCountry,
-    state,
     postalCode,
     line1,
     line2,
@@ -36,6 +34,8 @@ const CheckoutForm = () => {
     cartItems,
     user,
     clearCart,
+
+    setDotNum,
   } = React.useContext(StoreContext);
 
   const [succeeded, setSucceeded] = useState(false);
@@ -79,6 +79,8 @@ const CheckoutForm = () => {
   };
   useEffect(() => {
     createPaymentIntent();
+    setDotNum("2");
+
     //eslint-disable-next-line
   }, []);
 
@@ -119,8 +121,9 @@ const CheckoutForm = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      clearCart();
+      setDotNum("3");
       setTimeout(() => {
-        clearCart();
         navigate("/");
       }, 5000);
     }
@@ -128,47 +131,55 @@ const CheckoutForm = () => {
   const isUser = isAuthenticated && user;
   console.log(user);
   return (
-    <div className='checkout-container'>
-      {succeeded ? (
-        <article className='title'>
-          <h4 className='title-success'>Thank You!</h4>
-          <h4>Your payment was successful!</h4>
-          <h4>Redirecting to home page shortly...</h4>
-        </article>
-      ) : (
-        <article className='title'>
-          <h4 className='title-start'>Hello, {isUser && user.nickname}</h4>
-          <p>Your total is {formatPrice(total)}</p>
-          <p>Test Card Number: 4242 4242 4242 4242</p>
-        </article>
-      )}
-      <form id='payment-form' onSubmit={handleSubmit}>
-        <CardElement
-          id='card-element'
-          options={cardStyle}
-          onChange={handleChange}
-        />
-        <button disabled={processing || disabled || succeeded} id='submit'>
-          <span id='button-text'>
-            {processing ? <div className='spinner' id='spinner'></div> : "pay"}{" "}
-          </span>
-        </button>
-        {/*show any error that happens when processing the payment*/}
-        {error && (
-          <div className='card-element' role='alert'>
-            {error}
-          </div>
+    <>
+      <CheckoutNavbar />
+
+      <div className='checkout-container'>
+        {succeeded ? (
+          <article className='title'>
+            <h4 className='title-success'>Thank You!</h4>
+            <h4>Your payment was successful!</h4>
+            <h4>Redirecting to home page shortly...</h4>
+          </article>
+        ) : (
+          <article className='title'>
+            <h4 className='title-start'>Hello, {isUser && user.nickname}</h4>
+            <p>Your total is {formatPrice(total)}</p>
+            <p>Test Card Number: 4242 4242 4242 4242</p>
+          </article>
         )}
-        {/* show any success message upon completion  */}
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succeeded, see the result in your
-          <a href={`https://dashboard.stripe.com/test/payments`}>
-            Stripe dashboard.
-          </a>
-          Refresh the page to pay again.
-        </p>
-      </form>
-    </div>
+        <form id='payment-form' onSubmit={handleSubmit}>
+          <CardElement
+            id='card-element'
+            options={cardStyle}
+            onChange={handleChange}
+          />
+          <button disabled={processing || disabled || succeeded} id='submit'>
+            <span id='button-text'>
+              {processing ? (
+                <div className='spinner' id='spinner'></div>
+              ) : (
+                "pay"
+              )}{" "}
+            </span>
+          </button>
+          {/*show any error that happens when processing the payment*/}
+          {error && (
+            <div className='card-element' role='alert'>
+              {error}
+            </div>
+          )}
+          {/* show any success message upon completion  */}
+          <p className={succeeded ? "result-message" : "result-message hidden"}>
+            Payment succeeded, see the result in your
+            <a href={`https://dashboard.stripe.com/test/payments`}>
+              Stripe dashboard.
+            </a>
+            Refresh the page to pay again.
+          </p>
+        </form>
+      </div>
+    </>
   );
 };
 

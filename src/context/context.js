@@ -39,6 +39,9 @@ const StoreProvider = ({ children }) => {
   //guest login
   const [loginAsGuest, setLoginAsGuest] = useState(false);
 
+  //dots
+  const [dotNum, setDotNum] = useState("1");
+
   const filterItems = (item, index) => {
     if (item === "all") {
       setMenuItems(products);
@@ -128,6 +131,8 @@ const StoreProvider = ({ children }) => {
         setCity,
         loginAsGuest,
         setLoginAsGuest,
+        dotNum,
+        setDotNum,
       }}
     >
       {children}

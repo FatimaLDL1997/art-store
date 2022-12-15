@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { StoreProvider, StoreContext } from "../context/context";
 import { Navigate } from "react-router-dom";
+import CheckoutNavbar from "../components/CheckoutNavbar";
 
+///images/art/forest.jpg
 const Form = () => {
   const {
     firstName,
@@ -140,6 +142,9 @@ const Form = () => {
     ) {
       setError(true);
       handleMissingMark(inputs);
+    } else if (!email.includes("@")) {
+      setEmail("");
+      setError(false);
     } else {
       handleMissingMark(inputs);
       setSubmitted(true);
@@ -159,8 +164,8 @@ const Form = () => {
   };
   // Handling the email change
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
     setSubmitted(false);
+    setEmail(e.target.value);
   };
   // Handling the phone change
   const handlePhoneChange = (e) => {
@@ -199,9 +204,11 @@ const Form = () => {
   };
   return (
     <Wrapper>
+      <CheckoutNavbar />
+
       <div className='form-container'>
         <h4>Before you proceed,</h4>
-        <h4>Please fill in the following: </h4>
+        <h4>Please fill in the following shipping details: </h4>
 
         {/* Calling to the methods */}
         <div className='messages'>
@@ -318,20 +325,18 @@ const Form = () => {
             />
             <div className='missing-mark'>*</div>
           </div>
-          <div className='box'>
-            {!submitted ? (
-              <button
-                onClick={handleSubmit}
-                className='btn btn-checkout'
-                type='submit'
-              >
-                Submit
-              </button>
-            ) : (
-              <Navigate replace to='/checkout' />
-            )}
-          </div>
         </form>
+        {!submitted ? (
+          <button
+            onClick={handleSubmit}
+            className='btn btn-checkout'
+            type='submit'
+          >
+            Submit
+          </button>
+        ) : (
+          <Navigate replace to='/checkout' />
+        )}
       </div>
     </Wrapper>
   );
@@ -346,22 +351,36 @@ const Wrapper = styled.div`
   }
   .form-container {
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-container h4 {
+    font-size: 2rem;
+    font-weight: 200;
+    font-family: "Crimson Text", serif;
+    text-align: center;
   }
   .btn-checkout {
-    position: fixed;
+    position: relative;
     right: 1rem;
-    bottom: 2rem;
+    // bottom: 2rem;
     font-size: 1rem !important;
     background: #ca6e6e;
+    margin: 2rem;
   }
   .btn-checkout:hover {
     background: #da9c9c;
+  }
+  .box:first-child {
+    padding-top: 2rem;
   }
   .box {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding-bottom: 1rem;
+    align-items: center;
   }
   .form-box {
     display: flex;
@@ -369,23 +388,41 @@ const Wrapper = styled.div`
     align-items: flex-start;
   }
   .label {
-    padding-left: 1rem;
-    padding-right: 0.5rem;
+    width: 20vw;
+    font-size: 1rem;
+    color: #9e4656; 
   }
   .error h1 {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 200;
     color: red;
   }
   .input {
-    position: absolute;
-    margin-left: 7rem;
+    position: relative;
     width: 10rem;
+    background: none;
+
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: grey;
+  }
+  .input:focus {
+    border-color: black;
+    outline: none !important;
   }
   .missing-mark {
     position: absolute;
-    margin-left: 17rem;
+    margin-left: 21vw;
     color: red;
     display: none;
   }
-`;
+  @media screen and (max-width: 800px) {
+  .form-container h4 {
+    font-size: 1rem; 
+  }
+  .label {
+    font-size: 0.8rem;
+    width: 35vw; 
+  }
+  `;

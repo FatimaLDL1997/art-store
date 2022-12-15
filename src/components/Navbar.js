@@ -116,7 +116,9 @@ const Navbar = () => {
             <h4>welcome, {user.nickname.toUpperCase()}</h4>
           )}
           {!isUser ? (
-            <button onClick={loginWithRedirect}>Hello Guest! Login?</button>
+            <button className='login-btn' onClick={loginWithRedirect}>
+              Hello Guest! Login?
+            </button>
           ) : (
             <button
               onClick={() => {
@@ -174,6 +176,12 @@ const Wrapper = styled.nav`
   position: static;
   left: 25vw;
   right: 75vw;
+
+  .login-btn {
+    font-family: "Dancing Script", cursive;
+    color: black;
+    font-size: 2rem;
+  }
 
   .category-btn-white {
     color: white;
@@ -241,6 +249,9 @@ const Wrapper = styled.nav`
     .top-nav img {
       height: 7vw;
       width: 7vw !important;
+    }
+    .login-btn {
+      font-size: 1rem;
     }
   }
 `;
