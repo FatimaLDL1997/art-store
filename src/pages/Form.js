@@ -31,6 +31,8 @@ const Form = () => {
     setCity,
   } = React.useContext(StoreContext);
 
+  const [msg, setMsg] = useState("");
+
   // States for registration
   const [name, setName] = useState("");
 
@@ -97,7 +99,7 @@ const Form = () => {
   };
 
   // Showing error message if error is true
-  const errorMessage = () => {
+  const errorMessage = (m) => {
     return (
       <div
         className='error'
@@ -105,7 +107,7 @@ const Form = () => {
           display: error ? "" : "none",
         }}
       >
-        <h1>Please enter all the fields</h1>
+        <h1>{m}</h1>
       </div>
     );
   };
@@ -133,6 +135,7 @@ const Form = () => {
       firstName === "" ||
       lastName === "" ||
       email === "" ||
+      !email.includes("@") ||
       phone === "" ||
       address == "" ||
       city === "" ||
@@ -141,10 +144,11 @@ const Form = () => {
       postalCode === ""
     ) {
       setError(true);
+      setMsg("Please enter all values");
       handleMissingMark(inputs);
-    } else if (!email.includes("@")) {
-      setEmail("");
-      setError(false);
+      if (!email.includes("@")) {
+        setMsg("Email Invalid");
+      }
     } else {
       handleMissingMark(inputs);
       setSubmitted(true);
@@ -212,7 +216,7 @@ const Form = () => {
 
         {/* Calling to the methods */}
         <div className='messages'>
-          {errorMessage()}
+          {errorMessage(msg)}
           {successMessage()}
         </div>
 
