@@ -363,7 +363,7 @@ const Wrapper = styled.div`
   }
   .btn-checkout {
     position: relative;
-    right: 1rem;
+    // right: 1rem;
     // bottom: 2rem;
     font-size: 1rem !important;
     background: #ca6e6e;
