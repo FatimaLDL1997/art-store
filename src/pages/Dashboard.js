@@ -59,7 +59,7 @@ const Dashboard = () => {
           </div>
           <div className='store-space'>
             <Navbar></Navbar>
-            <div className='paintings-box'>
+            <div className='dashboard-box'>
               {menuItems.map((product) => {
                 const { id, img } = product;
                 return (
@@ -106,7 +106,7 @@ const Wrapper = styled.nav`
     background: #75a87e;
   }
 
-  .paintings-box {
+  .dashboard-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
