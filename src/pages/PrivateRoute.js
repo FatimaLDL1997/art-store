@@ -9,6 +9,7 @@ const PrivateRoute = ({ children }) => {
   if (loginAsGuest) {
     console.log(loginAsGuest);
   } else {
+    // <Link to='/' refresh='true' />;
     return children;
   }
 

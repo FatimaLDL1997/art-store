@@ -176,6 +176,62 @@ p {
 }
 
 @media screen and (max-width: 800px) {
+  /* mobile and tablets */
+  .disc {
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    width: 80% !important;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .disc .title {
+    text-align: center !important;
+  }
+  .paintings-box {
+    left: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    align-content: center !important;
+  }
+}
+@media screen and (max-width: 983px) {
+  /* laptops and pcs */
+  .disc {
+    width: 37vw !important;
+    font-size: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative !important;
+    right: 2vw !important;
+    left: 2vw !important;
+    padding-bottom: 8rem;
+    justify-content: center;
+  }
+  .disc .title {
+    text-align: center !important;
+  }
+  .paintings-box {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 30vw;
+    flex-wrap: wrap;
+    padding-top: 10rem;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .paintings-box img {
+    width: 30vw !important;
+  }
+}
+@media screen and (max-width: 800px) {
   .side-nav {
     display: none !important;
   }

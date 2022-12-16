@@ -29,6 +29,7 @@ const Form = () => {
     setLine2,
     city,
     setCity,
+    setDotNum,
   } = React.useContext(StoreContext);
 
   const [msg, setMsg] = useState("");
@@ -56,6 +57,8 @@ const Form = () => {
     country,
     postalCode,
   ];
+
+  setDotNum("1");
 
   const handleMissingMark = (inputs) => {
     //looks for hte index at which input is empthy '

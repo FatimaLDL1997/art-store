@@ -269,7 +269,7 @@ const Wrapper = styled.nav`
     justify-content: center;
   }
   .disc {
-    width: 37vw;
+    width: 30vw;
     font-size: 2rem;
     display: flex;
     flex-direction: row;
@@ -308,24 +308,6 @@ const Wrapper = styled.nav`
     align-items: flex-start;
     align-content: flex-start;
     justify-content: center;
-  }
-  @media screen and (min-width: 200px) {
-    .paintings-box {
-      padding-top: 10rem !important;
-    }
-  }
-  @media screen and (min-width: 500px) {
-    .paintings-box {
-      padding-top: 10rem !important;
-    }
-  }
-  @media screen and (max-width: 800px) {
-    .paintings-box {
-      left: 0 !important;
-      display: flex;
-      justify-content: center;
-      padding-top: 5rem !important;
-    }
   }
 `;
 
