@@ -63,7 +63,10 @@ function App() {
             }
           />
 
-          <Route path='login' element={<Login />} />
+          <Route
+            path='login'
+            element={loginAsGuest ? <Login /> : <Dashboard />}
+          />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>
