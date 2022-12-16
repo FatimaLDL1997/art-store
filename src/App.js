@@ -5,8 +5,11 @@ import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Form from "./pages/Form";
+import { StoreContext } from "./context/context";
 
 function App() {
+  const { loginAsGuest } = React.useContext(StoreContext);
+
   return (
     <AuthWrapper>
       <Router>
@@ -14,9 +17,13 @@ function App() {
           <Route
             path='/'
             element={
-              <PrivateRoute>
+              loginAsGuest ? (
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              ) : (
                 <Dashboard />
-              </PrivateRoute>
+              )
             }
           />
           <Route
