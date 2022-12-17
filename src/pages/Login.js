@@ -21,9 +21,9 @@ const Login = () => {
     }
   }, []);
 
-  useEffect(() => {
-    window.location.assign("/");
-  }, [loginAsGuest]);
+  // useEffect(() => {
+  //   window.location.assign("/");
+  // }, [loginAsGuest]);
 
   return (
     <Wrapper>
