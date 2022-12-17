@@ -15,11 +15,15 @@ const Login = () => {
     let data = window.performance.getEntriesByType("navigation")[0].type;
     console.log(data);
 
-    if (data == "reload" || loginAsGuest) {
+    if (data == "reload") {
       console.log("reloaded");
       window.location.assign("/");
     }
   }, []);
+
+  useEffect(() => {
+    window.location.assign("/");
+  }, [loginAsGuest]);
 
   return (
     <Wrapper>
