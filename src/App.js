@@ -30,36 +30,52 @@ function App() {
             exact
             path='/:productId'
             element={
-              <PrivateRoute>
+              loginAsGuest ? (
+                <PrivateRoute>
+                  <ProductItem />
+                </PrivateRoute>
+              ) : (
                 <ProductItem />
-              </PrivateRoute>
+              )
             }
           />
           <Route
             exact
             path='/cart'
             element={
-              <PrivateRoute>
+              loginAsGuest ? (
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              ) : (
                 <Cart />
-              </PrivateRoute>
+              )
             }
           />
           <Route
             exact
             path='/checkout'
             element={
-              <PrivateRoute>
+              loginAsGuest ? (
+                <PrivateRoute>
+                  <Checkout />
+                </PrivateRoute>
+              ) : (
                 <Checkout />
-              </PrivateRoute>
+              )
             }
           />
           <Route
             exact
             path='/form'
             element={
-              <PrivateRoute>
+              loginAsGuest ? (
+                <PrivateRoute>
+                  <Form />
+                </PrivateRoute>
+              ) : (
                 <Form />
-              </PrivateRoute>
+              )
             }
           />
 
