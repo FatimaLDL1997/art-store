@@ -15,7 +15,7 @@ const Login = () => {
     let data = window.performance.getEntriesByType("navigation")[0].type;
     console.log(data);
 
-    if (data == "reload") {
+    if (data == "reload" || loginAsGuest) {
       console.log("reloaded");
       window.location.assign("/");
     }
