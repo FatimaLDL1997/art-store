@@ -31,12 +31,13 @@ const Login = () => {
         <img src={loginImg} className='background-img' alt='user' />
         <div className='card'>
           <h1>Welcome!</h1>
+
           <button className='btn' onClick={loginWithRedirect}>
             Login/Sign Up
           </button>
-          <button className='btn' onClick={() => setLoginAsGuest(true)}>
+          {/* <button className='btn' onClick={() => setLoginAsGuest(true)}>
             Login As Guest
-          </button>
+          </button> */}
         </div>
       </div>
     </Wrapper>
