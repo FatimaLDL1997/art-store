@@ -114,6 +114,8 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: center;
     align-content: center;
+    padding: 10rem;
+    padding-top: 0rem;
   }
   .box img {
     width: 15rem;
