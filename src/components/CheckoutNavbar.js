@@ -13,43 +13,34 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 
 const CheckoutNavbar = () => {
   const { dotNum } = React.useContext(StoreContext);
-  console.log(typeof dotNum);
+  console.log(dotNum);
+
   return (
     <Wrapper>
       <div className='container'>
         <div className='text-container'>
           <Link to={{ pathname: "/cart" }}>
             <AiOutlineShoppingCart
-              className='text'
-              style={{
-                fontSize: "1.5rem",
-                color: dot1 == "1" ? "white" : "black",
-              }}
+              className='icon1'
+              style={{ color: dotNum == 1 ? "black" : "white" }}
             />
           </Link>
           <Link to={{ pathname: "/form" }}>
             <FaWpforms
-              className='text'
-              style={{
-                fontSize: "1.5rem",
-                color: dot1 == "2" ? "white" : "black",
-              }}
+              className='icon2'
+              style={{ color: dotNum == 2 ? "black" : "white" }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <RiMoneyDollarBoxLine
-              style={{
-                fontSize: "1.5rem",
-                color: dot1 == "3" ? "white" : "black",
-              }}
+              className='icon3'
+              style={{ color: dotNum == 3 ? "black" : "white" }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <IoMdCheckboxOutline
-              style={{
-                fontSize: "1.5rem",
-                color: dot1 == "4" ? "white" : "black",
-              }}
+              className='icon4'
+              style={{ color: dotNum == 4 ? "black" : "white" }}
             />
           </Link>
         </div>
@@ -105,9 +96,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-  .text {
-    color: white;
-  }
+
   .line-container {
     width: 100vw;
     height: 4rem;
@@ -124,7 +113,14 @@ const Wrapper = styled.div`
     font-size: 1.5rem;
     font-weight: 200;
     font-family: "Dancing Script", cursive;
+    color: white;
   }
+  // .icon:hover {
+  //   color: red;
+  // }
+  // .icon:active {
+  //   color: red;
+  // }
   @media screen and (max-width: 800px) {
     .text {
       font-size: 0.8rem;
@@ -137,6 +133,7 @@ const Wrapper = styled.div`
     .text-container {
       height: 2rem;
       padding: 0;
+      padding-bottom: 2rem;
     }
     .container {
       padding: 2rem;
