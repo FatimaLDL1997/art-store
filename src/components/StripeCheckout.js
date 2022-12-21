@@ -79,7 +79,7 @@ const CheckoutForm = () => {
   };
   useEffect(() => {
     createPaymentIntent();
-    setDotNum("2");
+    setDotNum("3");
 
     //eslint-disable-next-line
   }, []);
@@ -122,7 +122,7 @@ const CheckoutForm = () => {
       setProcessing(false);
       setSucceeded(true);
       clearCart();
-      setDotNum("3");
+      setDotNum("4");
       setTimeout(() => {
         navigate("/");
       }, 5000);

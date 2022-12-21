@@ -4,6 +4,8 @@ import { StoreProvider, StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
+import CheckoutNavbar from "../components/CheckoutNavbar";
+
 // eslint-disable-next-line
 
 const Cart = () => {
@@ -17,7 +19,12 @@ const Cart = () => {
     isloading,
     calTotal,
     setClicked,
+    setDotNum,
   } = React.useContext(StoreContext);
+
+  setTimeout(() => {
+    setDotNum("1");
+  }, [0]);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -42,6 +49,8 @@ const Cart = () => {
 
   return (
     <Wrapper>
+      <CheckoutNavbar />
+
       <main>
         {cartItems.length == 0 ? (
           <div className='empty-cart'>
@@ -53,9 +62,9 @@ const Cart = () => {
         ) : (
           <div>
             <h1 className='title'>CartItems</h1>
-            <Link to={{ pathname: "/" }} className='back-icon'>
+            {/* <Link to={{ pathname: "/" }} className='back-icon'>
               <BiArrowBack />
-            </Link>
+            </Link> */}
             {cartItems.map((item, index) => {
               const { amount, price, id, name, src } = item[0];
               // const { amount, price, id, name, src } = item;
@@ -88,9 +97,14 @@ const Cart = () => {
               <h1>Total</h1>
               <h1>${total}</h1>
             </div>
-            <Link to={{ pathname: "/form" }} className='checkout-container'>
-              <button className='btn btn-checkout'>CHECKOUT</button>
-            </Link>
+            <div className='btn-container'>
+              <Link to={{ pathname: "/" }}>
+                <button className='btn back-checkout'>BACK</button>
+              </Link>
+              <Link to={{ pathname: "/form" }}>
+                <button className='btn btn-checkout'>CHECKOUT</button>
+              </Link>
+            </div>
           </div>
         )}
       </main>
@@ -98,6 +112,13 @@ const Cart = () => {
   );
 };
 const Wrapper = styled.nav`
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rem;
+  margin-top: 2rem;
+}
   .container-text-del {
     display: flex;
     flex-direction: row;
@@ -111,9 +132,18 @@ const Wrapper = styled.nav`
       cursor: pointer; 
   }
   }
+  .back-checkout {
+    position: relative !important;
+    // right: 10rem;
+    font-size: 1rem !important;
+    background: #ca6e6e;
+  }
+  .back-checkout:hover {
+    background: #da9c9c;
+  }
   .btn-checkout {
     position: relative !important;
-    right: 10rem;
+    // right: 10rem;
     font-size: 1rem !important;
     background: #ca6e6e;
   }

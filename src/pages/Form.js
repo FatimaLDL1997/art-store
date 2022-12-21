@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StoreProvider, StoreContext } from "../context/context";
+import { StoreContext } from "../context/context";
 import { Navigate } from "react-router-dom";
 import CheckoutNavbar from "../components/CheckoutNavbar";
 
@@ -34,8 +34,8 @@ const Form = () => {
 
   const [msg, setMsg] = useState("");
 
-  // States for registration
-  const [name, setName] = useState("");
+  // // States for registration
+  // const [name, setName] = useState("");
 
   // States for checking the errors
   const [submitted, setSubmitted] = useState(false);
@@ -58,7 +58,9 @@ const Form = () => {
     postalCode,
   ];
 
-  setDotNum("1");
+  setTimeout(() => {
+    setDotNum("2");
+  }, [0]);
 
   const handleMissingMark = (inputs) => {
     //looks for hte index at which input is empthy '
@@ -115,6 +117,18 @@ const Form = () => {
     );
   };
 
+  const testFill = () => {
+    console.log("test");
+    setEmail("fatimalabade@gmail.com");
+    setFirstName("Fatima");
+    setLastName("Labade");
+    setPhone("289-830-9290");
+    setLine1("Unit 89-123 Rouge Hill Street");
+    setPostalCode("A1B 2C3");
+    setCity("Toronto");
+    setCountry("CA");
+    setState("ON");
+  };
   // Handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -333,6 +347,16 @@ const Form = () => {
             <div className='missing-mark'>*</div>
           </div>
         </form>
+      </div>
+      <div className='btn-container'>
+        <Link to={{ pathname: "/cart" }}>
+          <button className='btn back-checkout'>BACK</button>
+        </Link>
+
+        <button onClick={testFill} className='btn btn-test' type='submi t'>
+          Test fill
+        </button>
+
         {!submitted ? (
           <button
             onClick={handleSubmit}
@@ -351,6 +375,22 @@ const Form = () => {
 
 export default Form;
 const Wrapper = styled.div`
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rem;
+  margin-top: 2rem;
+}
+ .back-checkout {
+    position: relative !important;
+    // right: 10rem;
+    font-size: 1rem !important;
+    background: #ca6e6e;
+  }
+  .back-checkout:hover {
+    background: #da9c9c;
+  }
   .checkout-container {
     height: 6rem;
     position: absolute;
@@ -367,6 +407,17 @@ const Wrapper = styled.div`
     font-weight: 200;
     font-family: "Crimson Text", serif;
     text-align: center;
+  }
+  .btn-test {
+    position: relative;
+    // right: 1rem;
+    // bottom: 2rem;
+    font-size: 1rem !important;
+    background: #649b8b;
+    margin: 2rem;
+  }
+  .btn-test:hover {
+    background: #90bbae;
   }
   .btn-checkout {
     position: relative;

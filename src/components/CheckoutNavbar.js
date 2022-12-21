@@ -3,19 +3,29 @@ import styled from "styled-components";
 import dot1 from "../images/dot1.png";
 import dot2 from "../images/dot2.png";
 import dot3 from "../images/dot3.png";
-
+import dot4 from "../images/dot4.png";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../context/context";
 
 const CheckoutNavbar = () => {
-  const { dotNum, setDotNum } = React.useContext(StoreContext);
+  const { dotNum } = React.useContext(StoreContext);
   console.log(dotNum);
   return (
     <Wrapper>
       <div className='container'>
         <div className='text-container'>
-          <h1 className='text'>Shipping</h1>
-          <h1 className='text'>Payment</h1>
-          <h1 className='text'>Confirmation</h1>
+          <Link to={{ pathname: "/cart" }}>
+            <h1 className='text'>Cart</h1>
+          </Link>
+          <Link to={{ pathname: "/form" }}>
+            <h1 className='text'>Shipping</h1>
+          </Link>
+          <Link to={{ pathname: "/checkout" }}>
+            <h1 className='text'>Payment</h1>
+          </Link>
+          <Link to={{ pathname: "/checkout" }}>
+            <h1 className='text'>Confirmation</h1>
+          </Link>
         </div>
 
         {dotNum === "1" && (
@@ -33,6 +43,11 @@ const CheckoutNavbar = () => {
             <img src={dot3} />
           </div>
         )}
+        {dotNum === "4" && (
+          <div className='line-container'>
+            <img src={dot4} />
+          </div>
+        )}
       </div>
     </Wrapper>
   );
@@ -40,8 +55,14 @@ const CheckoutNavbar = () => {
 
 export default CheckoutNavbar;
 const Wrapper = styled.div`
+  .checkout-nav {
+    color: black;
+  }
+  .checkout-nav:hover {
+    color: #5d9988;
+  }
   .container {
-    background: pink;
+    background: #ca6e6e;
     width: 100vw;
     height: 5rem;
     padding: 4rem;
@@ -57,6 +78,9 @@ const Wrapper = styled.div`
     padding-top: 0.5rem;
     align-items: center;
     justify-content: space-around;
+  }
+  .text {
+    color: white;
   }
   .line-container {
     width: 100vw;
