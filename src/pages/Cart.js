@@ -266,15 +266,16 @@ const Wrapper = styled.nav`
   .item-name {
     margin-bottom: -1rem; 
   }
-  .btn-checkout {
-    right: 2rem !important;
-  }
+
   .title {
     font-size:3rem;
   }
   .item-container {
     margin: 2rem !important;
     flex-direction: column; 
+  }
+  .btn-container {
+    margin: 2rem !important;
   }
   .total-side {
     justify-content: center ; 

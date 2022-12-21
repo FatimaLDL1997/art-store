@@ -401,8 +401,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin:10rem;
+    margin-top:5rem;
+    margin-bottom: 2rem;
+    background: #ca6e6e;
   }
-  .form-container h4 {
+  .form-container h4 {a
     font-size: 2rem;
     font-weight: 200;
     font-family: "Crimson Text", serif;
@@ -425,7 +429,7 @@ const Wrapper = styled.div`
     // bottom: 2rem;
     font-size: 1rem !important;
     background: #ca6e6e;
-    margin: 2rem;
+    // margin: 2rem;
   }
   .btn-checkout:hover {
     background: #da9c9c;
@@ -448,7 +452,7 @@ const Wrapper = styled.div`
   .label {
     width: 20vw;
     font-size: 1rem;
-    color: #9e4656; 
+    color: #f1dde1; 
   }
   .error h1 {
     font-size: 1rem;
@@ -459,11 +463,11 @@ const Wrapper = styled.div`
     position: relative;
     width: 10rem;
     background: none;
-
     border-top: none;
     border-right: none;
     border-left: none;
-    border-color: grey;
+    border-color: #f1dde1;
+    color:#ffcccc;
   }
   .input:focus {
     border-color: black;
@@ -479,8 +483,15 @@ const Wrapper = styled.div`
   .form-container h4 {
     font-size: 1rem; 
   }
+  .form-container {
+    margin:2rem !important; 
+  }
+  .btn-container{
+    margin:2rem !important; 
+  }
   .label {
     font-size: 0.8rem;
     width: 35vw; 
   }
+
   `;

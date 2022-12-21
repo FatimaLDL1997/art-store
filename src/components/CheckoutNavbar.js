@@ -19,10 +19,16 @@ const CheckoutNavbar = () => {
       <div className='container'>
         <div className='text-container'>
           <Link to={{ pathname: "/cart" }}>
-            <AiOutlineShoppingCart className='text' />
+            <AiOutlineShoppingCart
+              className='text'
+              style={{ fontSize: "1.5rem", color: "white" }}
+            />
           </Link>
           <Link to={{ pathname: "/form" }}>
-            <FaWpforms className='text' />
+            <FaWpforms
+              className='text'
+              style={{ fontSize: "1.5rem", color: "white" }}
+            />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <RiMoneyDollarBoxLine
