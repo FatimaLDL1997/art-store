@@ -214,20 +214,7 @@ const Wrapper = styled.nav`
     font-size: 1.5rem;
     margin: 0;
   }
-  .circle {
-    border-radius: 50%;
-    background: white;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 6vh;
-    right: 4vw;
-    width: 2rem;
-    height: 2rem;
-    z-index: 0;
-    opacity: 0.8;
-  }
+
   .btn-add {
     position: relative !important;
     font-size: 1rem !important;
