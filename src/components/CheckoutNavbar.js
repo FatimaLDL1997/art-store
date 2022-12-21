@@ -6,6 +6,10 @@ import dot3 from "../images/dot3.png";
 import dot4 from "../images/dot4.png";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../context/context";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaWpforms } from "react-icons/fa";
+import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { IoMdCheckboxOutline } from "react-icons/io";
 
 const CheckoutNavbar = () => {
   const { dotNum } = React.useContext(StoreContext);
@@ -15,16 +19,20 @@ const CheckoutNavbar = () => {
       <div className='container'>
         <div className='text-container'>
           <Link to={{ pathname: "/cart" }}>
-            <h1 className='text'>Cart</h1>
+            <AiOutlineShoppingCart className='text' />
           </Link>
           <Link to={{ pathname: "/form" }}>
-            <h1 className='text'>Shipping</h1>
+            <FaWpforms className='text' />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
-            <h1 className='text'>Payment</h1>
+            <RiMoneyDollarBoxLine
+              style={{ fontSize: "1.5rem", color: "white" }}
+            />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
-            <h1 className='text'>Confirmation</h1>
+            <IoMdCheckboxOutline
+              style={{ fontSize: "1.5rem", color: "white" }}
+            />
           </Link>
         </div>
 
