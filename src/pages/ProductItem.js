@@ -28,8 +28,7 @@ const ProductItem = () => {
   } = React.useContext(StoreContext);
 
   const product = hobbies.find((product) => product.id == productId);
-  const { id, medium, size, text, price, category, img } = product;
-
+  const { id, medium, size, text, price, category, img, desc } = product;
   // console.log(cartItems);
 
   const handleDec = () => {
@@ -170,10 +169,7 @@ const ProductItem = () => {
 
             <div className='disc'>
               <span className='title'>{text}</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis mollitia nostrum odio a, sequi nisi rem molestiae,
-              doloribus commodi, facere esse exercitationem inventore? Quam,
-              quos deleniti pariatur similique voluptatum beatae.
+              {desc}
             </div>
           </div>
         </div>

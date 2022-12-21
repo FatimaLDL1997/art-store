@@ -7,6 +7,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
+    desc: "This painting is inspired by a youtube tutorial. I love nature and love bringing it into my home. Would you want to feel like you are in a forest in your own home too?",
   },
   {
     id: 3,
@@ -16,6 +17,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
+    desc: "This painting is inspired by a youtube tutorial. The ocean always gives me a sense of calm. Do you want to bring a calmer and a tropical vibe to you own home? Then this painting is perfect for your decor",
   },
   {
     id: 2,
@@ -25,6 +27,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
+    desc: " This is painting is inpired by a Youtube tutorial. This paining is a beautiful way to bring a brilliant blue to your home as well as the ocean. It can make you feel the tropicals within your own space.",
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
+    desc: "This painting is inspired by my own imagination. It is created on SketchUp, a painting app on my tablet. The beauty of painting digitally is that you can have more flexibility and chances of making mistakes. ",
   },
   {
     id: 5,
@@ -70,6 +74,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "This is a painting of my own cat who drives me crazy by his cuteness everyday. He does all he can to get attention and, even in this painting, he can't help by do the same.",
   },
   {
     id: 9,
@@ -79,6 +84,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "This painting is of my clients dog who I met a GM in Oshawa. She asked me to paint her dog a portrait. The original painting was already sold at around $90.",
   },
   {
     id: 10,
@@ -88,6 +94,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "This painting was inspired by rainbow colors and is one of the paintings that can bring alot of colors to your interior decor. This painting was done by me and my husband.",
   },
   {
     id: 12,
@@ -97,6 +104,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 13,
@@ -106,6 +114,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 14,
@@ -115,6 +124,7 @@ export const hobbies = [
     price: "2.0",
     category: "animals",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 15,
@@ -124,6 +134,7 @@ export const hobbies = [
     price: "2.0",
     category: "portraits",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 16,
@@ -133,6 +144,7 @@ export const hobbies = [
     price: "2.0",
     category: "objects",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
 
   {
@@ -143,6 +155,7 @@ export const hobbies = [
     price: "5.0",
     category: "qoutes",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 18,
@@ -152,6 +165,7 @@ export const hobbies = [
     price: "4.0",
     category: "nature",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
   {
     id: 19,
@@ -161,5 +175,6 @@ export const hobbies = [
     price: "3.0",
     category: "qoutes",
     size: "20x20cm",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo voluptatibus voluptatem cum sed omnis libero illo. Aliquam, harum pariatur. Itaque accusamus alias molestias minima cumque. Dolores obcaecati rem reiciendis!  ",
   },
 ];
