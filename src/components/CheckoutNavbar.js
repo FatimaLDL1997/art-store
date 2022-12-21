@@ -13,7 +13,7 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 
 const CheckoutNavbar = () => {
   const { dotNum } = React.useContext(StoreContext);
-  console.log(dotNum);
+  console.log(typeof dotNum);
   return (
     <Wrapper>
       <div className='container'>
@@ -21,23 +21,35 @@ const CheckoutNavbar = () => {
           <Link to={{ pathname: "/cart" }}>
             <AiOutlineShoppingCart
               className='text'
-              style={{ fontSize: "1.5rem", color: "white" }}
+              style={{
+                fontSize: "1.5rem",
+                color: dot1 == "1" ? "white" : "black",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/form" }}>
             <FaWpforms
               className='text'
-              style={{ fontSize: "1.5rem", color: "white" }}
+              style={{
+                fontSize: "1.5rem",
+                color: dot1 == "2" ? "white" : "black",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <RiMoneyDollarBoxLine
-              style={{ fontSize: "1.5rem", color: "white" }}
+              style={{
+                fontSize: "1.5rem",
+                color: dot1 == "3" ? "white" : "black",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <IoMdCheckboxOutline
-              style={{ fontSize: "1.5rem", color: "white" }}
+              style={{
+                fontSize: "1.5rem",
+                color: dot1 == "4" ? "white" : "black",
+              }}
             />
           </Link>
         </div>

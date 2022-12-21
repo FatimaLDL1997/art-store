@@ -457,7 +457,7 @@ const Wrapper = styled.div`
   .error h1 {
     font-size: 1rem;
     font-weight: 200;
-    color: red;
+    color: pink;
   }
   .input {
     position: relative;
@@ -476,7 +476,7 @@ const Wrapper = styled.div`
   .missing-mark {
     position: absolute;
     margin-left: 21vw;
-    color: red;
+    color: pink;
     display: none;
   }
   @media screen and (max-width: 800px) {
