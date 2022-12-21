@@ -122,7 +122,7 @@ const Form = () => {
     setEmail("fatimalabade@gmail.com");
     setFirstName("Fatima");
     setLastName("Labade");
-    setPhone("289-830-9290");
+    setPhone("123-456-7891");
     setLine1("Unit 89-123 Rouge Hill Street");
     setPostalCode("A1B 2C3");
     setCity("Toronto");
