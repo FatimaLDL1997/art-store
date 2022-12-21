@@ -121,20 +121,7 @@ const Wrapper = styled.nav`
     width: 15rem;
     height: 15rem;
   }
-  .circle {
-    border-radius: 50%;
-    background: white;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 6vh;
-    right: 4vw;
-    width: 2rem;
-    height: 2rem;
-    z-index: 0;
-    opacity: 0.8;
-  }
+
   .cart-amount {
     color: black;
     font-size: 1.5rem;
