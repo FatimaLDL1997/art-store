@@ -184,12 +184,12 @@ const Wrapper = styled.nav`
   }
 
   .category-btn-white {
-    color: white;
+    color: black !important;
     padding-bottom: 1rem;
   }
   .category-btn-white:hover {
     cursor: pointer;
-    color: #1a0b0b;
+    color: white !important;
   }
   .category-btn:hover {
     cursor: pointer;

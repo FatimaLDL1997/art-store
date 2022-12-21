@@ -319,7 +319,7 @@ p {
   display: none;
 }
 .hamburger-menu h5 {
-  color: black !important;
+  /* color: black !important; */
 }
 .loading-img {
   position: absolute;
