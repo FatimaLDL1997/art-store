@@ -180,7 +180,7 @@ const Wrapper = styled.nav`
   .login-btn {
     font-family: "Dancing Script", cursive;
     color: black;
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .category-btn-white {
@@ -251,7 +251,7 @@ const Wrapper = styled.nav`
       width: 7vw !important;
     }
     .login-btn {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
   }
 `;

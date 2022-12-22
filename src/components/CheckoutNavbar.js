@@ -22,25 +22,37 @@ const CheckoutNavbar = () => {
           <Link to={{ pathname: "/cart" }}>
             <AiOutlineShoppingCart
               className='icon1'
-              style={{ color: dotNum == 1 ? "black" : "white" }}
+              style={{
+                fontSize: "2rem",
+                color: dotNum == 1 ? "black" : "white",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/form" }}>
             <FaWpforms
               className='icon2'
-              style={{ color: dotNum == 2 ? "black" : "white" }}
+              style={{
+                fontSize: "2rem",
+                color: dotNum == 2 ? "black" : "white",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <RiMoneyDollarBoxLine
               className='icon3'
-              style={{ color: dotNum == 3 ? "black" : "white" }}
+              style={{
+                fontSize: "2rem",
+                color: dotNum == 3 ? "black" : "white",
+              }}
             />
           </Link>
           <Link to={{ pathname: "/checkout" }}>
             <IoMdCheckboxOutline
               className='icon4'
-              style={{ color: dotNum == 4 ? "black" : "white" }}
+              style={{
+                fontSize: "2rem",
+                color: dotNum == 4 ? "black" : "white",
+              }}
             />
           </Link>
         </div>
@@ -80,7 +92,7 @@ const Wrapper = styled.div`
   }
   .container {
     background: #ca6e6e;
-    width: 100vw;
+    width: 100%;
     height: 5rem;
     padding: 4rem;
     display: flex;
@@ -89,7 +101,7 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .text-container {
-    width: 100vw;
+    width: 100%;
     height: 4rem;
     display: flex;
     padding-top: 0.5rem;
@@ -98,14 +110,14 @@ const Wrapper = styled.div`
   }
 
   .line-container {
-    width: 100vw;
+    width: 100%;
     height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .line-container img {
-    width: 90vw;
+    width: 90%;
     height: auto;
     padding: 0.5rem;
   }

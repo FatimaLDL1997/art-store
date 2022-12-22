@@ -40,6 +40,7 @@ const Form = () => {
   // States for checking the errors
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [filled, setFilled] = useState(false);
 
   let missingMark = document.getElementsByClassName("missing-mark");
   let emptyIndecies = [];
@@ -117,8 +118,22 @@ const Form = () => {
     );
   };
 
+  const unFill = () => {
+    console.log("unfill");
+    setFilled(!filled);
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setPhone("");
+    setLine1("");
+    setPostalCode("");
+    setCity("");
+    setCountry("");
+    setState("");
+  };
   const testFill = () => {
     console.log("test");
+    setFilled(!filled);
     setEmail("fatimalabade@gmail.com");
     setFirstName("Fatima");
     setLastName("Labade");
@@ -353,9 +368,15 @@ const Form = () => {
           <button className='btn back-checkout'>BACK</button>
         </Link>
 
-        <button onClick={testFill} className='btn btn-test' type='submi t'>
-          Test fill
-        </button>
+        {!filled ? (
+          <button onClick={testFill} className='btn btn-test' type='submit'>
+            Test fill
+          </button>
+        ) : (
+          <button onClick={unFill} className='btn btn-test'>
+            Unfill
+          </button>
+        )}
 
         {!submitted ? (
           <button
@@ -468,6 +489,7 @@ const Wrapper = styled.div`
     border-left: none;
     border-color: #f1dde1;
     color:#ffcccc;
+    border-radius: 0;
   }
   .input:focus {
     border-color: black;

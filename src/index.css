@@ -169,6 +169,7 @@ p {
   margin: 0 auto;
   max-width: 1170px;
 }
+
 @media screen and (min-width: 992px) {
   .section-center {
     width: 95vw;
@@ -209,9 +210,11 @@ p {
     left: 2vw !important;
     padding-bottom: 8rem;
     justify-content: center;
+    text-align: justify !important;
   }
   .disc .title {
-    text-align: center !important;
+    /* text-align: center !important; */
+    text-align: justify !important;
   }
   .paintings-box {
     display: flex;
@@ -246,15 +249,16 @@ p {
   .disc {
     left: 0 !important;
     right: 0 !important;
-    text-align: center !important;
-    width: 50% !important;
+    text-align: justify !important;
+    width: 80% !important;
     justify-content: center;
   }
   .disc .title {
-    text-align: center !important;
+    text-align: justify !important;
   }
   .store-space {
     width: 50% !important;
+    padding-top: 0.5rem !important;
   }
   .burger-icon {
     display: block !important;
@@ -268,7 +272,7 @@ p {
     font-size: 1rem !important;
   }
   .circle {
-    top: 8vh !important;
+    top: 2rem !important;
     right: 4vw !important;
     width: 1rem !important;
     height: 1rem !important;
@@ -416,7 +420,7 @@ main {
   width: 75vw;
   position: absolute;
   left: 25vw;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 .fixed-content {
   background: #ecd7d7;

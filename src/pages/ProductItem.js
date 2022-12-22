@@ -252,8 +252,8 @@ const Wrapper = styled.nav`
     justify-content: center;
   }
   .disc {
-    width: 30vw;
-    font-size: 2rem;
+    width: 30%;
+    font-size: 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -270,7 +270,7 @@ const Wrapper = styled.nav`
     padding: 0.5vh;
   }
   .title {
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 400;
     padding-bottom: 1rem;
     line-height: 4rem;
