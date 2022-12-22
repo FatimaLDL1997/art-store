@@ -7,7 +7,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
-    desc: "This painting is inspired by a youtube tutorial. I love nature and love bringing it into my home. Would you want to feel like you are in a forest in your own home too?",
+    desc: "This painting is inspired by a Youtube tutorial. I love nature and love bringing it into my home. Would you want to feel like you are in a forest in your own home too?",
   },
   {
     id: 3,
@@ -17,7 +17,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
-    desc: "This painting is inspired by a youtube tutorial. The ocean always gives me a sense of calm. Do you want to bring a calmer and a tropical vibe to you own home? Then this painting is perfect for your decor",
+    desc: "This painting is inspired by a Youtube tutorial. The ocean always gives me a sense of calm. Do you want to bring a calmer and a tropical vibe to you own home? Then this painting is perfect for your decor",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "nature",
-    desc: " This is painting is inpired by a Youtube tutorial. This paining is a beautiful way to bring a brilliant blue to your home as well as the ocean. It can make you feel the tropicals within your own space.",
+    desc: " This painting is inpired by a Youtube tutorial. This paining is a beautiful way to bring a brilliant blue to your home as well as the ocean. It can make you feel the tropicals within your own space.",
   },
   {
     id: 4,
@@ -47,6 +47,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "portraits",
+    desc: "This painting is inspired by my own imagination. It is created on SketchUp, a painting app on my tablet. The beauty of painting digitally is that you can have more flexibility and chances of making mistakes. ",
   },
   {
     id: 6,
@@ -56,6 +57,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "objects",
+    desc: "This painting is inspired by my own imagination. It is created on SketchUp, a painting app on my tablet. The beauty of painting digitally is that you can have more flexibility and chances of making mistakes. ",
   },
   {
     id: 7,
@@ -65,6 +67,7 @@ export const hobbies = [
     price: "2.0",
     size: "20x20cm",
     category: "animals",
+    desc: "This painting is inspired by my own imagination. It is created on SketchUp, a painting app on my tablet. The beauty of painting digitally is that you can have more flexibility and chances of making mistakes. ",
   },
   {
     id: 1,

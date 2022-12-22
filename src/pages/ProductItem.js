@@ -159,12 +159,13 @@ const ProductItem = () => {
                   <BiPlus />
                 </button>
               </div>
-              <div className='error-container'>
-                {error.show ? <h1>{error.msg}</h1> : <h1>{error.msg} </h1>}
-              </div>
+
               <button onClick={(e) => addToCart(e)} className='btn btn-add'>
                 ADD TO CART
               </button>
+              <div className='error-container'>
+                {error.show ? <h1>{error.msg}</h1> : <h1>{error.msg} </h1>}
+              </div>
             </div>
 
             <div className='disc'>

@@ -12,7 +12,7 @@ const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState(hobbies);
   const [active, setActive] = useState("0");
   const [isloading, setIsLoading] = useState(false);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [menuItems, setMenuItems] = useState(products);
