@@ -403,7 +403,7 @@ const Wrapper = styled.div`
     position: relative;
     text-align: center;
     margin: 2rem;
-    margin-top: 3rem;
+    margin-top:2rem;
     font-family: "Dancing Script", cursive;
     font-size:3rem;
   }
