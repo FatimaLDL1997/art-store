@@ -73,18 +73,9 @@ const Cart = () => {
               <Link to={{ pathname: "/" }}>
                 <button className='btn back-checkout'>BACK</button>
               </Link>
-              <Link to={{ pathname: "/form" }}>
-                <button className='btn btn-checkout'>CHECKOUT</button>
-              </Link>
             </div>
           </div>
         ) : (
-          // <div className='empty-cart'>
-          //   <h1>Cart is Empty</h1>
-          //   <Link to={{ pathname: "/" }} className='empty-back-icon'>
-          //     <BiArrowBack />
-          //   </Link>
-          // </div>
           <div>
             <h1 className='title'>CartItems</h1>
             {/* <Link to={{ pathname: "/" }} className='back-icon'>
