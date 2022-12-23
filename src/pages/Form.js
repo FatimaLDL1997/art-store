@@ -245,17 +245,17 @@ const Form = () => {
       <div className='form-container'>
         <h1 className='title'>Shipping Info</h1>
 
-        <div className='title-container'>
-          <h4>Before you proceed,</h4>
-          <h4>Please fill in the following shipping details: </h4>
-        </div>
-        {/* Calling to the methods */}
-        <div className='messages'>
-          {errorMessage(msg)}
-          {successMessage()}
-        </div>
-
         <form className='form-box'>
+          <div className='title-container'>
+            <h4>Before you proceed,</h4>
+            <h4>Please fill in the following shipping details: </h4>
+          </div>
+          {/* Calling to the methods */}
+          <div className='messages'>
+            {errorMessage(msg)}
+            {successMessage()}
+          </div>
+
           <div className='box'>
             <label className='label'> First Name</label>
             <input
@@ -415,7 +415,8 @@ const Wrapper = styled.div`
   margin-top: 2rem;
 }
 .title-container {
-   background: #ecd7d7;
+    background: #ca6e6e;
+
     padding: 1rem;
 }
  .back-checkout {
