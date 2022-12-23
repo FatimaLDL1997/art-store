@@ -143,7 +143,9 @@ const CheckoutForm = () => {
           </article>
         ) : (
           <article className='title'>
-            <h4 className='title-start'>Hello, {isUser && user.nickname}</h4>
+            <h4 className='title-start'>
+              Payment Details {isUser && user.nickname}
+            </h4>
             <p>Your total is {formatPrice(total)}</p>
             <p>Test Card Number: 4242 4242 4242 4242</p>
           </article>
@@ -207,17 +209,21 @@ const Wrapper = styled.section`
     }
   }
   .title-success,
-  .title-start {
-    font-family: "Dancing Script", cursive;
-    font-size: 2rem;
-    text-align: center;
+  .title-start  {
+      position: relative;
+      text-align: center;
+      margin: 2rem;
+      margin-top: 3rem;
+      font-family: "Dancing Script", cursive;
+      font-size: 3rem;
+    }
   }
   .title {
     font-size: 2rem;
     text-align: center;
   }
   .checkout-container {
-    padding-top: 20vh;
+    padding-top: 0rem;
     display: flex;
     justify-content: center;
     flex-direction: column;

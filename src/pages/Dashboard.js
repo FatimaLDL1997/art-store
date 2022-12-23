@@ -5,6 +5,7 @@ import loadingImage from "../images/preloader.gif";
 // import { hobbies } from "../context/data/products";
 import { StoreContext } from "../context/context";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 // eslint-disable-next-line
 const Dashboard = () => {
   const {

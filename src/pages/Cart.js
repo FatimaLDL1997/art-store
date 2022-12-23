@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
 import CheckoutNavbar from "../components/CheckoutNavbar";
+import empty from "../images/empty-cart.png";
 
 // eslint-disable-next-line
 
@@ -53,13 +54,37 @@ const Cart = () => {
 
       <main>
         {cartItems.length == 0 ? (
-          <div className='empty-cart'>
-            <h1>Cart is Empty</h1>
-            <Link to={{ pathname: "/" }} className='empty-back-icon'>
-              <BiArrowBack />
-            </Link>
+          <div>
+            <h1 className='title'>CartItems</h1>
+
+            <div className='item-container'>
+              <div className='empty-cart'>
+                {/* <h1>Empty</h1> */}
+                <img src={empty} alt='empty' />
+                {/* <TbShoppingCartOff /> */}
+              </div>
+            </div>
+
+            <div className='total-container'>
+              <h1>Total</h1>
+              <h1>${total}</h1>
+            </div>
+            <div className='btn-container'>
+              <Link to={{ pathname: "/" }}>
+                <button className='btn back-checkout'>BACK</button>
+              </Link>
+              <Link to={{ pathname: "/form" }}>
+                <button className='btn btn-checkout'>CHECKOUT</button>
+              </Link>
+            </div>
           </div>
         ) : (
+          // <div className='empty-cart'>
+          //   <h1>Cart is Empty</h1>
+          //   <Link to={{ pathname: "/" }} className='empty-back-icon'>
+          //     <BiArrowBack />
+          //   </Link>
+          // </div>
           <div>
             <h1 className='title'>CartItems</h1>
             {/* <Link to={{ pathname: "/" }} className='back-icon'>
@@ -118,6 +143,11 @@ const Wrapper = styled.nav`
   align-items: center;
   margin: 10rem;
   margin-top: 2rem;
+}
+.empty-cart img {
+  position: relative;
+  width: 5rem;
+  height: auto; 
 }
   .container-text-del {
     display: flex;
@@ -199,12 +229,14 @@ const Wrapper = styled.nav`
   }
   .empty-cart {
     display: flex;
+
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    align-content: center;
 
-    height: 100vh;
+    flex-direction: column;
+
+    width: 100%;
+    height: 10rem;
   }
   .empty-back-icon {
     font-size: 2rem;
@@ -226,7 +258,9 @@ const Wrapper = styled.nav`
     color: #ca6e6e;
   }
   .empty-cart h1 {
-    font-family: "Dancing Script", cursive;
+    font-family: "Open Sans", sans-serif; 
+    font-weight: 200; 
+    font-size: 2rem;
   }
   .item-img {
     width: 11rem;

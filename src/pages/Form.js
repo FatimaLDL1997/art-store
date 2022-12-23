@@ -243,9 +243,12 @@ const Form = () => {
       <CheckoutNavbar />
 
       <div className='form-container'>
-        <h4>Before you proceed,</h4>
-        <h4>Please fill in the following shipping details: </h4>
+        <h1 className='title'>Shipping Info</h1>
 
+        <div className='title-container'>
+          <h4>Before you proceed,</h4>
+          <h4>Please fill in the following shipping details: </h4>
+        </div>
         {/* Calling to the methods */}
         <div className='messages'>
           {errorMessage(msg)}
@@ -396,12 +399,24 @@ const Form = () => {
 
 export default Form;
 const Wrapper = styled.div`
+  .title {
+    position: relative;
+    text-align: center;
+    margin: 2rem;
+    margin-top: 3rem;
+    font-family: "Dancing Script", cursive;
+    font-size:3rem;
+  }
 .btn-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10rem;
   margin-top: 2rem;
+}
+.title-container {
+   background: #ecd7d7;
+    padding: 1rem;
 }
  .back-checkout {
     position: relative !important;
@@ -419,13 +434,14 @@ const Wrapper = styled.div`
   }
   .form-container {
     padding: 2rem;
+    padding-top: 0rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin:10rem;
-    margin-top:5rem;
+    margin-top:0;
     margin-bottom: 2rem;
-    background: #ca6e6e;
+    // background: #ca6e6e;
   }
   .form-container h4 {a
     font-size: 2rem;
@@ -466,6 +482,8 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .form-box {
+    background: #ca6e6e;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
